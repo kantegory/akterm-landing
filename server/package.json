@@ -1,0 +1,19 @@
+{
+  "name": "arkterm-server",
+  "version": "1.0.0",
+  "description": "server for photo uploading",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "David Dobryakov",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "formidable": "^1.2.2",
+    "ini": "^1.3.5",
+    "shelljs": "^0.8.4"
+  }
+}

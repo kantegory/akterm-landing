@@ -1,0 +1,10 @@
+doctype html
+html(lang="en")
+  head
+    title Это лендинг компании Арктерм
+  body
+    h1 Это лендинг компании Арктерм
+    #container.col
+      each image in images
+        div
+          img(src=("" + directory + image))

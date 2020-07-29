@@ -1,0 +1,14 @@
+{
+  "name": "client-arkterm",
+  "version": "1.0.0",
+  "description": "Arkterm client-side page",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "David Dobryakov",
+  "license": "ISC",
+  "dependencies": {
+    "pug": "^3.0.0"
+  }
+}
