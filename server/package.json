@@ -4,10 +4,11 @@
   "description": "server for photo uploading",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node index.js"
   },
   "author": "David Dobryakov",
   "license": "ISC",
+  "repository": "https://github.com/kantegory/arkterm",
   "dependencies": {
     "express": "^4.17.1"
   },
