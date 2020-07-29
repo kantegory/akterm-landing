@@ -7,4 +7,4 @@ html(lang="en")
     #container.col
       each image in images
         div
-          img(src=("" + directory + image))
+          img(src=(`${directory}/${image}`))
