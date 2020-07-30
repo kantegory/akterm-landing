@@ -53,11 +53,6 @@ http.createServer(function (req, res) {
     res.write('<input type="file" name="filetoupload"><br>');
     res.write('<input type="submit">');
     res.write('</form>');
-
-    res.write('<form accept-charset="utf-8" action="sendmsg" method="post">');
-    res.write('<textarea name="msg"></textarea><br>');
-    res.write('<input type="submit">');
-    res.write('</form>');
     return res.end();
   }
 }).listen(8080); 
