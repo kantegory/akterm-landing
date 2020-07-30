@@ -1,9 +1,4 @@
 node_modules/
 *~
 *.swp
-*.jpg
-*.jpeg
-*.png
-*.svg
-*.webp
 dist/

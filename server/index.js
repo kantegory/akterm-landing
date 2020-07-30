@@ -14,12 +14,12 @@ http.createServer(function (req, res) {
     var form = new formidable.IncomingForm();
     form.parse(req, function (err, fields, files) {
       var oldpath = files.filetoupload.path;
-      var newpath = picDir + files.filetoupload.name;
+      var newpath = picDir + '/' + files.filetoupload.name;
       fs.rename(oldpath, newpath, function (err) {
         if (err) throw err;
         res.write('File uploaded and moved!');
         res.end();
-        shell.exec(`${scriptsDir}update.sh`);
+        shell.exec(`${scriptsDir}/update.sh`);
       });
  });
   } else {

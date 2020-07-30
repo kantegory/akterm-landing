@@ -1,0 +1,106 @@
+section {
+  margin: 2em 0;
+}
+
+.container {
+  display: -webkit-flex;
+  display: -moz-flex;
+  display: -ms-flex;
+  display: -o-flex;
+  display: flex;
+  flex-direction: column;
+  margin: auto 0;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.comparsion {
+  display: -webkit-flex;
+  display: -moz-flex;
+  display: -ms-flex;
+  display: -o-flex;
+  display: flex;
+  flex-flow: row wrap;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+}
+
+.comparsion img {
+  width: 50%;
+}
+
+.logo-container {
+  display: -webkit-flex;
+  display: -moz-flex;
+  display: -ms-flex;
+  display: -o-flex;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.heading {
+  text-align: center;
+}
+
+.comparsion, .brief {
+  max-width: 1600px;
+}
+
+.brief {
+  margin: auto;
+}
+
+.brief > * {
+  text-align: justify;
+}
+
+.brief ul li {
+  list-style-type: none;
+}
+
+.brief ul li::before {
+  content: "-";
+  margin: 0 0.75rem;
+}
+
+.accent {
+  color: #db0001;
+}
+
+p.accent {
+  font-weight: 600;
+  font-size: 18pt;
+}
+
+.brief .heading, p.accent {
+  text-align: center !important;
+}
+
+@media (min-width: 1440px) and (max-width: 1679px) {
+  .comparsion, .brief {
+    max-width: 1400px;
+  }
+}
+
+@media (min-width: 1280px) and (max-width: 1439px) {
+  .comparsion, .brief {
+    max-width: 1200px;
+  }
+}
+
+@media (min-width: 1024px) and (max-width: 1279px) {
+  .comparsion, .brief {
+    max-width: 1000px;
+  }
+}
+
+@media (min-width: 300px) and (max-width: 1023px) {
+  .comparsion, .brief {
+    max-width: 800px;
+    flex-flow: column;
+  }
+}
