@@ -36,7 +36,7 @@ fetch('/imgs')
             let id = `img${img.split('.')[0]}`;
 
             imgs += `<div class="col">
-	            <img width="200" src="images/${img}" alt="" /><br>
+	            <img width="200" src="${img}" alt="" /><br>
 				<button type="button" onclick="delImg('${img}')">Удалить</button>
 				<p>Выберите файл:</p>
 				<input type="file" id="${id}" name="filetoupload">

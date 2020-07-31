@@ -13,6 +13,7 @@ const sendMsg = require('./mailer');
 let config = conf.parse(fs.readFileSync('/home/kantegory/work/arkterm/config/config.ini', 'utf-8'));
 
 let picDir = config.common.pic_dir;
+let buildDir = config.common.build_dir;
 let scriptsDir = config.common.scripts_dir;
 
 const getImgs = () => {
@@ -25,7 +26,7 @@ const getImgs = () => {
 
 server.listen(8080);
 
-app.use(express.static('../client/'));
+app.use(express.static(picDir));
 app.use(bodyParser.json());
 
 app.get('/', (req, res) => {

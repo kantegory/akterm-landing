@@ -1,356 +1,524 @@
 <!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"><title>Актерм</title><style>body {
-  margin: 0;
-  padding: 0;
+    margin: 0 5%;
+    padding: 0;
 }
 
-.w-100, .w-100 .comparsion {
-  width: 100% !important;
-  margin: 0 !important;
-  max-width: 100%;
+.w-100,
+.w-100 .comparsion {
+    width: 100% !important;
+    margin: 0 !important;
+    max-width: 100%;
 }
 
 .upper {
- text-transform: uppercase;
+    text-transform: uppercase;
 }
 
 .white {
-  color: #fff;
+    color: #fff;
 }
 
 .z-10 {
-  position: absolute;
-  z-index: 10;
-  bottom: 0;
-  left: 0;
+    position: absolute;
+    z-index: 10;
+    bottom: 0;
+    left: 0;
 }
 
 .left p {
-  text-align: left;
+    text-align: left;
 }
 
 .ml-5 {
-  margin-left: 5em;
+    margin-left: 5em;
 }
 
 .mb-2 {
-  margin-bottom: 2em;
+    margin-bottom: 2em;
+}
+
+.mb-1 {
+    margin-bottom: 1em;
 }
 
 .mt-10 {
-  margin-top: 10em;
+    margin-top: 10em;
 }
 
 .fs-lg {
-  font-size: 36pt;
+    font-size: 30pt;
 }
 
 .fs-md {
-  font-size: 28pt;
+    font-size: 28pt;
 }
 
-h1, h2, h3, h4 {
-  padding: 0;
-  margin: 0;
+h1,
+h2,
+h3,
+h4 {
+    padding: 0;
+    margin: 0;
 }
 
-section {
-  /*margin: 2em 0;*/
+section.contacts>* {
+    color: #fff;
+    position: relative;
+    font-size: 20pt;
+    font-weight: 600;
 }
 
-section.contacts > * {
-  color: #fff;
-  position: relative;
-  font-size: 20pt;
-  font-weight: 600;
+section.contacts img {
+    width: 100%;
 }
 
 h3.heading-contacts {
-  font-size: 30pt;
+    font-size: 30pt;
 }
 
 .content-contacts {
-  position: absolute;
-  top: 0;
-  left: 0;
-  z-index: 3;
-  width: 100%;
-  margin: auto;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 3;
+    width: 100%;
+    margin: auto;
 }
 
 .ml-auto {
-  margin-left: auto;
+    margin-left: auto;
 }
 
-.content-contacts ul, .p-container {
-  display: -webkit-flex;
-  display: -moz-flex;
-  display: -ms-flex;
-  display: -o-flex;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
+.content-contacts ul,
+.p-container {
+    display: -webkit-flex;
+    display: -moz-flex;
+    display: -ms-flex;
+    display: -o-flex;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.grad-contacts {
+    position: relative;
 }
 
 .p-container {
-  margin-left: 2em;
+    margin-left: 2em;
 }
 
 .p-container p {
-  margin: 0;
-  padding: 0;
+    margin: 0;
+    padding: 0;
 }
 
-.cont > p {
-  color: #000;
+.cont>p {
+    color: #000;
 }
 
 .cont {
-  padding: 0.75rem 1.25rem;
+    padding: 0.75rem 1.25rem;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 50%;
 }
 
-.content-contacts ul li, .content-contacts p {
-  text-align: left !important;
-  width: 50%;
-  display: -webkit-flex;
-  display: -moz-flex;
-  display: -ms-flex;
-  display: -o-flex;
-  display: flex;
-  flex-direction: row;
+.content-contacts ul li,
+.content-contacts p {
+    text-align: left !important;
+    width: 50%;
+    display: -webkit-flex;
+    display: -moz-flex;
+    display: -ms-flex;
+    display: -o-flex;
+    display: flex;
+    flex-direction: row;
+    font-size: 14pt !important;
 }
 
 .content-contacts ul li::before {
-  content: "•";
+    content: "•";
 }
 
 .container {
-  display: -webkit-flex;
-  display: -moz-flex;
-  display: -ms-flex;
-  display: -o-flex;
-  display: flex;
-  flex-direction: column;
-  margin: auto 0;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  position: relative;
+    display: -webkit-flex;
+    display: -moz-flex;
+    display: -ms-flex;
+    display: -o-flex;
+    display: flex;
+    flex-direction: column;
+    margin: auto 0;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    position: relative;
 }
 
 .comparsion {
-  position: relative;
-  display: -webkit-flex;
-  display: -moz-flex;
-  display: -ms-flex;
-  display: -o-flex;
-  display: flex;
-  flex-flow: row wrap;
-  width: 100%;
-  /*justify-content: center;*/
-  /*align-items: center;*/
+    position: relative;
+    display: -webkit-flex;
+    display: -moz-flex;
+    display: -ms-flex;
+    display: -o-flex;
+    display: flex;
+    flex-flow: row wrap;
+    width: 100%;
 }
 
-.comparsion img.img-compare {
-  width: 50%;
+.comparsion .img-compare {
+    width: 50%;
+}
+
+.img-compare {
+    background-image: var(--img);
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100vh;
+    max-width: 1600px;
 }
 
 .logo-container {
-  display: -webkit-flex;
-  display: -moz-flex;
-  display: -ms-flex;
-  display: -o-flex;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
+    display: -webkit-flex;
+    display: -moz-flex;
+    display: -ms-flex;
+    display: -o-flex;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
 }
 
 .logo {
-  z-index: 10;
-  margin-top: 2em;
-  width: 50%;
+    z-index: 10;
+    margin-top: 2em;
+    width: 50%;
 }
 
 .heading {
-  text-align: center;
+    text-align: center;
 }
 
 .center {
-  text-align: center !important;
+    text-align: center !important;
 }
 
-.comparsion, .brief {
-  max-width: 1600px;
+.comparsion,
+.brief {
+    max-width: 1600px;
 }
 
 .brief {
-  margin: auto;
-  margin-top: 2em;
+    margin: auto;
+    margin-top: 2em;
 }
 
-.brief > * {
-  text-align: justify;
+.brief>* {
+    text-align: justify;
 }
 
 .brief ul li {
-  list-style-type: none;
+    list-style-type: none;
 }
 
 .brief ul li::before {
-  content: "-";
-  margin: 0 0.75rem;
+    content: "-";
+    margin: 0 0.75rem;
 }
 
 .accent {
-  color: #db0001;
+    color: #db0001;
 }
 
 p.accent {
-  font-weight: 600 !important;
-  font-size: 18pt !important;
+    font-weight: 600 !important;
+    font-size: 18pt !important;
 }
 
-.brief p, .brief li {
-  font-size: 14pt;
-  font-weight: normal;
+.brief p,
+.brief li {
+    font-size: 14pt;
+    font-weight: normal;
 }
 
-.brief .heading, p.accent {
-  text-align: center !important;
+.brief .heading,
+p.accent {
+    text-align: center !important;
 }
 
 .brief {
-  position: relative;
-  padding: 0.75rem 1.25rem;
+    position: relative;
+    padding: 0.75rem 1.25rem;
 }
 
 .gradient {
-  position: relative;
-  width: 100%;
-  height: 1380px;
+    position: relative;
+    width: 100%;
+    height: 100vh;
 }
 
-.h-200 {
-  height: 2000px !important;
-}
 
 .gradient img.top {
-  position: absolute;
-  width: 100%;
-  z-index: 2;
-  top: 0;
-  left: 0;
+    position: absolute;
+    width: 100%;
+    z-index: 2;
+    top: 0;
+    left: 0;
 }
 
 .gradient img.middle {
-  position: absolute;
-  width: 100%;
-  z-index: 2;
-  top: 30%;
-  left: 0;
+    position: absolute;
+    width: 100%;
+    z-index: 2;
+    top: 30%;
+    left: 0;
 }
 
 .gradient img.bottom {
-  position: absolute;
+    position: absolute;
+    width: 100%;
+    z-index: 2;
+    bottom: 0;
+    right: 0;
+}
+
+.h-200 {
+    height: 145vh !important;
+}
+
+.order {
   width: 100%;
-  z-index: 2;
-  bottom: 0;
-  right: 0;
+}
+
+.order .wrapper {
+    display: -webkit-flex;
+    display: -moz-flex;
+    display: -ms-flex;
+    display: -o-flex;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 50%;
+    margin: auto;
+}
+
+.order .wrapper > * {
+    margin-bottom: 0.5em;
+    width: 500px;
+}
+
+.order input,
+.order textarea {
+    padding: 0;
+    font-size: 12pt;
+    line-height: 1.2;
+    font-stretch: 1.2;
+    font-family: inherit;
+}
+
+.order textarea {
+    padding: 0.25rem 0.5rem !important;
+    resize: none;
+    resize: vertical;
+    min-height: 50px;
+}
+
+.order label {
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+
+.order button {
+	border: none;
+	border-radius: 5px;
+    padding: 0.25rem 0.75rem;
+    cursor: pointer;
+    width: 300px;
+    height: 50px;
+    overflow: visible;
+    background: #ed4c09;
+    color: #fff;
+    font: inherit;
+    line-height: normal;
+    text-transform: uppercase;
+    font-weight: 600;
+}
+
+.order .wrapper {
+  padding: 1.5rem;
 }
 
 @media (min-width: 1440px) and (max-width: 1679px) {
-  .comparsion, .brief {
-    /*max-width: 1400px;*/
+  .fs-lg {
+    font-size: 24pt;
   }
 
-  .gradient {
-    height: 1150px;
-    min-height: 1050px;
-    max-height: 1150px;
+  .fs-md {
+    font-size: 20pt;
   }
 
-  .h-200 {
-  	height: 1700px !important;
-    min-height: 1500px !important;
-    max-height: 1700px !important;
+  .content-contacts ul li, .content-contacts p {
+    font-size: 12pt !important;
   }
 }
 
 @media (min-width: 1280px) and (max-width: 1439px) {
-  .comparsion, .brief {
-    /*max-width: 1200px;*/
+  .fs-lg {
+    font-size: 20pt;
   }
 
-  .gradient {
-    height: 1000px;
-    min-height: 920px;
-    max-height: 1000px;
+  .fs-md, section.contacts > *, .brief p, .brief li {
+    font-size: 16pt;
   }
 
-  .h-200 {
-  	height: 1480px !important;
-    min-height: 1400px !important;
-    max-height: 1480px !important;
+  .content-contacts ul li, .content-contacts p {
+    font-size: 12pt !important;
   }
-
 }
 
 @media (min-width: 1024px) and (max-width: 1279px) {
-  .comparsion, .brief {
-    /*max-width: 1000px;*/
+  .fs-lg, .heading-contacts {
+    font-size: 16pt;
   }
 
-  .gradient {
-    height: 100%;
-    min-height: 700px;
-    max-height: 900px;
+  .fs-md, section.contacts > *, .brief p, .brief li {
+    font-size: 14pt;
   }
 
-  .h-200 {
-  	height: 100% !important;
-    min-height: 1100px !important;
-    max-height: 1350px !important;
+  .content-contacts ul li, .content-contacts p {
+    font-size: 11pt !important;
   }
 }
 
-@media (min-width: 640px) and (max-width: 1023px) {
-  .comparsion, .brief {
-    /*max-width: 800px;*/
-    /*flex-flow: column;*/
-  }
-  .gradient {
-    height: 100%;
-    min-height: 400px;
-    max-height: 700px;
+@media (min-width: 767px) and (max-width: 1023px) {
+  .fs-lg, .heading-contacts {
+    font-size: 14pt;
   }
 
-  .h-200 {
-  	height: 100% !important;
-    min-height: 1100px !important;
-    max-height: 1300px !important;
+  .fs-md, section.contacts > *, .brief p, .brief li {
+    font-size: 12pt;
+  }
+
+  .grad-contacts img {
+    height: 75vh;
+  }
+
+  .content-contacts ul li, .content-contacts p {
+    font-size: 12pt !important;
+    font-weight: normal;
+  }
+
+  .cont {
+    width: 35%;
+  }
+
+  .content-contacts ul, .cont > * {
+    margin: 0.3em;
+  }
+
+  .p-container {
+    /*margin-left: 6em;*/
+  }
+}
+
+@media (min-width: 639px) and (max-width: 768px) {
+  .fs-lg, .heading-contacts {
+    font-size: 13pt;
+  }
+
+  .fs-md, section.contacts > *, .brief p, .brief li {
+    font-size: 11pt;
+  }
+
+  .grad-contacts img {
+    height: 75vh;
+  }
+
+  .content-contacts ul li, .content-contacts p {
+    font-size: 10pt !important;
+    font-weight: normal;
+  }
+
+  .cont {
+    width: 35%;
+  }
+
+  .content-contacts ul, .cont > * {
+    margin: 0.3em;
+  }
+
+  .p-container {
+    margin-left: 6em;
   }
 }
 
 @media (min-width: 300px) and (max-width: 639px) {
-  .comparsion, .brief {
-    /*max-width: 800px;*/
-    flex-flow: column;
+  .ml-5 {
+    margin-left: 1.5em;
   }
 
-  .comparsion img.img-compare {
+  .fs-lg, .heading-contacts, p.accent {
+    font-size: 12pt !important;
+  }
+
+  .fs-md, section.contacts > *, .brief p, .brief li {
+    font-size: 10pt;
+  }
+
+  .grad-contacts img {
+    height: 100vh;
+  }
+
+  .content-contacts ul li, .content-contacts p {
+    font-size: 9pt !important;
+    font-weight: normal;
+  }
+
+  .cont {
+    width: 35%;
+  }
+
+  .content-contacts ul, .cont > * {
+    margin: 0.1em;
+  }
+
+  .p-container {
+    margin-left: 6em;
+  }
+
+  .heading.z-10 p {
+    margin: 0.1em;
+  }
+
+  .order .wrapper > * {
+    margin-bottom: 0.5em;
+    width: 280px;
+  }
+
+}
+
+@media (min-width: 300px) and (max-width: 1279px) {
+  .comparsion {
+    flex-direction: column;
+  }
+
+  .comparsion .img-compare {
     width: 100%;
   }
 
-/*  .gradient {
-    height: 100%;
-    min-height: 400px;
-    max-height: 700px;
+  .gradient {
+    height: 200vh;
   }
 
   .h-200 {
-  	height: 100% !important;
-    min-height: 1100px !important;
-    max-height: 1300px !important;
-  }*/
-}</style></head><body><div class="w-100"><section class="comparsion"><div class="gradient h-200"><header class="logo-container"><img class="logo" src="/home/kantegory/work/arkterm/client/assets/logo.svg"></header><img class="top" src="/home/kantegory/work/arkterm/client/assets/background/gradient-1.png"><h1 class="heading upper white left ml-5 mb-2 fs-lg z-10"><p>Жидкие</p><p>изоляционные</p><p>покрытия</p></h1><img class="bottom mt-10" src="/home/kantegory/work/arkterm/client/assets/background/gradient-2.png"><div class="comparsion"><img class="img-compare" src="/home/kantegory/work/arkterm/client/images//01.png"><img class="img-compare" src="/home/kantegory/work/arkterm/client/images//02.png"></div></div></section></div><main class="container w-100"><section class="comparsion"><div class="gradient"><img class="top" src="/home/kantegory/work/arkterm/client/assets/background/gradient-3.png"><img class="middle" src="/home/kantegory/work/arkterm/client/assets/background/gradient-4.png"><img class="bottom" src="/home/kantegory/work/arkterm/client/assets/background/gradient-5.png"><div class="comparsion"><img class="img-compare" src="/home/kantegory/work/arkterm/client/images//03.jpg"><img class="img-compare" src="/home/kantegory/work/arkterm/client/images//04.jpg"></div></div></section></main><section class="brief"><h2 class="heading fs-lg">АКТЕРМ <span class="accent">Кристалл</span></h2><h3 class="center fs-md">Защитное покрытие</h3><p class="desc">Защитное покрытие для фасадов, декортиавного камня и дерева. Содержит акрил, полиэтиленовый воск и специальные полимеры, позвояющие оттакливаться воду и грязь от финишного слоя. Актерм Кристалл разработан для защиты фасада от влаги и ветра, а так же для сохранения его структуры и улучшения внешнего вида. После нанесения поверхность имеет матово-глянцевый оттенок. Актерм Кристалл создаёт прочную бесшовную и эластичную поверхность. Продукт экологически безопасен, не имеет резкого запаха, обладает длительной стойкостьб к воздействию стоячей воды и паропрницаемостью на фасаде. Содержит биоциды убивающие грибок и плесень. Срок службы более 15 лет.</p><p class="accent">Мы работаем с "АКТЕРМ КРИСТАЛЛ" и знаем о нём всё!</p><h4 class="fs-md"><strong>Стоимость работ</strong></h4><ul><li>Гидрофобизация стен фасада дома АКТЕРМ Кристалл 800 руб/кв.м.</li><li>Стоимость колеровки материала компания берет на себя.</li></ul><p>При объёме работ от 2000 кв.м. компания предоставляет рассрочку при оплате 50% от суммы договора.</p><p>Приобретенные свойства фасада зданий и сооружений после выполнения ремонтных работ по технологии "Актерм Кристалл":</p><ul><li>гидроизоляция стен фасада</li><li>теплоизоляция стен фасада</li><li>антикоррозийная защита металлических элементов и металлических конструкций</li><li>ветрозащита фасада</li><li>защита от плесени и грибка</li><li>улучшение внешнего вида здания</li><li>предотвращение дальнейших разрушений, растрескиваний и осыпания стен и элементов фасада.</li></ul><h4 class="fs-md"><strong>Этапы работ:</strong></h4><ol><li>Локальное удаление и зачистка стен и элементов фасада (выступов, парапетов, откосов окон, межпанельных швов (в панельных зданиях и сооружениях), декоративных элементов стен, швов перекрытия плит).</li><li>Грунтование стен и всех элементов стен фасада здания (стен, выступов, парапетов, отсов окон, межпанельных швов (в панельных зданиях и сооружениях), декоративных элементов стен, швов перекрытия плит).</li><li>Нанесене на стены и все элмент фасада материала Актерм Кристалл (бесцветного или колерованного в соответствии сеткой колеровки) безвоздушным агрегатом высокого давления.</li></ol></section><main class="container w-100"><section class="comparsion"><div class="gradient"><img class="top" src="/home/kantegory/work/arkterm/client/assets/background/gradient-7.png"><img class="bottom" src="/home/kantegory/work/arkterm/client/assets/background/gradient-9.png"><div class="comparsion"><img class="img-compare" src="/home/kantegory/work/arkterm/client/images//05.jpeg"><img class="img-compare" src="/home/kantegory/work/arkterm/client/images//06.jpeg"></div></div></section><section class="comparsion"><div class="gradient"><img class="top" src="/home/kantegory/work/arkterm/client/assets/background/gradient-7.png"><img class="bottom" src="/home/kantegory/work/arkterm/client/assets/background/gradient-9.png"><div class="comparsion"><img class="img-compare" src="/home/kantegory/work/arkterm/client/images//07.jpeg"><img class="img-compare" src="/home/kantegory/work/arkterm/client/images//08.jpg"></div></div></section><section class="comparsion"><div class="gradient"><img class="top" src="/home/kantegory/work/arkterm/client/assets/background/gradient-7.png"><img class="bottom" src="/home/kantegory/work/arkterm/client/assets/background/gradient-9.png"><div class="comparsion"><img class="img-compare" src="/home/kantegory/work/arkterm/client/images//09.jpg"><img class="img-compare" src="/home/kantegory/work/arkterm/client/images//10.jpg"></div></div></section><section class="comparsion"><div class="gradient"><img class="top" src="/home/kantegory/work/arkterm/client/assets/background/gradient-7.png"><img class="bottom" src="/home/kantegory/work/arkterm/client/assets/background/gradient-9.png"><div class="comparsion"><img class="img-compare" src="/home/kantegory/work/arkterm/client/images//11.JPG"><img class="img-compare" src="/home/kantegory/work/arkterm/client/images//12.JPG"></div></div></section></main><section class="contacts"><div class="grad-contacts"><img src="/home/kantegory/work/arkterm/client/assets/background/gradient-10.png"><div class="content-contacts"><h3 class="heading-contacts upper center">Технические характеристики</h3><ul><li>Конститенция:<span class="ml-auto">Однородная жидкая масса</span></li><li>Цвет:<span class="ml-auto">Прозрачный</span></li><li>Плотность:<span class="ml-auto">1.4-1.5 г/см3</span></li><li>Вязкость по Брукфильду:<span class="ml-auto">от 250 000 до 450 000 МПа с</span></li><li>Термостойкость:<span class="ml-auto">от -50 до +150</span></li><li>Расход<span class="ml-auto">1 кг/м2 при толщине сплошного слоя 1 мм</span></li><li>Температура применения:<span class="ml-auto">от +5 до +45</span></li><li>Время высыхания:<span class="ml-auto">24 часа при температуре не нижу +15</span></li><li>Гарантийный срок хранения:<span class="ml-auto">12 месяцев</span></li><li>Относительное удлинение:<span class="ml-auto">250%</span></li><li>Адгезия к бетону:<span class="ml-auto">Не менее 2Мпа</span></li><li>Возможность хождения:<span class="ml-auto">Через 24 часа</span></li><li>Водонепроницаемость:<span class="ml-auto">не менее W8 (8 атм)</span></li></ul><div class="p-container"><p>Гарантийный срок составляет 5 лет.</p><p>Срок службы материала минимум 15 лет.</p></div></div><div class="cont"><h3 class="accent upper fs-md">Контакты:</h3><p>ООО "НАУЧНО-ПРОИЗВОДСТВЕННАЯ КОМПАНИЯ ИЗОЛЯЦИОННЫЕ ТЕХНОЛОГИИ"</p><p>117342, Москва г, Бутлерова ул, дом 17</p><p>8 (926) 100-08-28</p><p>ООО "АКТЕРМ-СП"</p><P>194356, Санкт-Петербург г, Луначарского пр-кт, дом 52, к 2</P><p>8 (951) 668-93-13</p></div></div></section></body></html>
+    height: 220vh !important;
+  }
+
+  body {
+    margin: 0;
+  }
+}
+</style></head><body><div class="w-100"><section class="comparsion"><div class="gradient h-200"><header class="logo-container"><img class="logo" src="/home/kantegory/work/arkterm/client/dist/assets/logo.svg"></header><img class="top" src="/home/kantegory/work/arkterm/client/dist/assets/background/gradient-0.png"><h1 class="heading upper white left ml-5 mb-1 fs-lg z-10"><p>Защита и</p><p>восстановление</p><p>фасада</p></h1><img class="bottom mt-10" src="/home/kantegory/work/arkterm/client/dist/assets/background/gradient-2.png"><div class="comparsion"><div class="img-compare" style="--img: url(/home/kantegory/work/arkterm/client/dist/images//01.png);"></div><div class="img-compare" style="--img: url(/home/kantegory/work/arkterm/client/dist/images//02.png);"> </div></div></div></section></div><main class="container w-100"><section class="comparsion"><div class="gradient"><img class="top" src="/home/kantegory/work/arkterm/client/dist/assets/background/gradient-7.png"><img class="bottom" src="/home/kantegory/work/arkterm/client/dist/assets/background/gradient-9.png"><div class="comparsion"><div class="img-compare" style="--img: url(/home/kantegory/work/arkterm/client/dist/images//05.jpeg);"></div><div class="img-compare" style="--img: url(/home/kantegory/work/arkterm/client/dist/images//06.jpeg);"> </div></div></div></section></main><section class="brief"><h2 class="heading fs-lg">АКТЕРМ <span class="accent">Кристалл</span></h2><h3 class="center fs-md">Защитное покрытие</h3><p class="desc">Защитное покрытие для фасадов, декортиавного камня и дерева. Содержит акрил, полиэтиленовый воск и специальные полимеры, позвояющие оттакливаться воду и грязь от финишного слоя. Актерм Кристалл разработан для защиты фасада от влаги и ветра, а так же для сохранения его структуры и улучшения внешнего вида. После нанесения поверхность имеет матово-глянцевый оттенок. Актерм Кристалл создаёт прочную бесшовную и эластичную поверхность. Продукт экологически безопасен, не имеет резкого запаха, обладает длительной стойкостьб к воздействию стоячей воды и паропрницаемостью на фасаде. Содержит биоциды убивающие грибок и плесень. Срок службы более 15 лет.</p><p class="accent">Мы работаем с "АКТЕРМ КРИСТАЛЛ" и знаем о нём всё!</p><h4 class="fs-md"><strong>Стоимость работ</strong></h4><ul><li>Гидрофобизация стен фасада дома АКТЕРМ Кристалл 800 руб/кв.м.</li></ul><p>При объёме работ от 2000 кв.м. компания предоставляет рассрочку при оплате 50% от суммы договора.</p><p>Приобретенные свойства фасада зданий и сооружений после выполнения ремонтных работ по технологии "Актерм Кристалл":</p><ul><li>гидроизоляция стен фасада</li><li>теплоизоляция стен фасада</li><li>антикоррозийная защита металлических элементов и металлических конструкций</li><li>ветрозащита фасада</li><li>защита от плесени и грибка</li><li>улучшение внешнего вида здания</li><li>предотвращение дальнейших разрушений, растрескиваний и осыпания стен и элементов фасада.</li></ul><h4 class="fs-md"><strong>Этапы работ:</strong></h4><ol><li>Локальное удаление и зачистка стен и элементов фасада (выступов, парапетов, откосов окон, межпанельных швов (в панельных зданиях и сооружениях), декоративных элементов стен, швов перекрытия плит).</li><li>Грунтование стен и всех элементов стен фасада здания (стен, выступов, парапетов, отсов окон, межпанельных швов (в панельных зданиях и сооружениях), декоративных элементов стен, швов перекрытия плит).</li><li>Нанесене на стены и все элмент фасада материала Актерм Кристалл (бесцветного или колерованного в соответствии сеткой колеровки) безвоздушным агрегатом высокого давления.</li></ol><div class="order"><div class="wrapper"><h3 class="center accent fs-md mb-1">Оставить заявку</h3><label for="orderName">Как к Вам можно обращаться?</label><input type="text" placeholder="Как к Вам можно обращаться?" id="orderName" required><label for="orderContact">Контактные данные</label><input type="text" placeholder="Email/телефон" id="orderContact" required><label for="orderAnnotation">Текст заявки</label><textarea placeholder="Текст заявки" id="orderAnnotation"></textarea><button type="button">Отправить заявку</button></div></div></section><main class="container w-100"><section class="comparsion"><div class="gradient"><img class="top" src="/home/kantegory/work/arkterm/client/dist/assets/background/gradient-7.png"><img class="bottom" src="/home/kantegory/work/arkterm/client/dist/assets/background/gradient-9.png"><div class="comparsion"><div class="img-compare" style="--img: url(/home/kantegory/work/arkterm/client/dist/images//07.jpeg);"></div><div class="img-compare" style="--img: url(/home/kantegory/work/arkterm/client/dist/images//08.jpg);"> </div></div></div></section><section class="comparsion"><div class="gradient"><img class="top" src="/home/kantegory/work/arkterm/client/dist/assets/background/gradient-7.png"><img class="bottom" src="/home/kantegory/work/arkterm/client/dist/assets/background/gradient-9.png"><div class="comparsion"><div class="img-compare" style="--img: url(/home/kantegory/work/arkterm/client/dist/images//09.png);"></div><div class="img-compare" style="--img: url(/home/kantegory/work/arkterm/client/dist/images//10.png);"> </div></div></div></section></main><section class="contacts"><div class="grad-contacts"><img src="/home/kantegory/work/arkterm/client/dist/assets/background/gradient-10.png"><div class="content-contacts"><h3 class="fs-lg upper center">Технические характеристики</h3><ul><li>Конститенция:<span class="ml-auto">Однородная жидкая масса</span></li><li>Цвет:<span class="ml-auto">Прозрачный</span></li><li>Плотность:<span class="ml-auto">1.4-1.5 г/см3</span></li><li>Вязкость по Брукфильду:<span class="ml-auto">от 250 000 до 450 000 МПа с</span></li><li>Термостойкость:<span class="ml-auto">от -50 до +150</span></li><li>Расход:<span class="ml-auto">1 кг/м2 при толщине сплошного слоя 1 мм</span></li><li>Температура применения:<span class="ml-auto">от +5 до +45</span></li><li>Время высыхания:<span class="ml-auto">24 часа при температуре не нижу +15</span></li><li>Гарантийный срок хранения:<span class="ml-auto">12 месяцев</span></li><li>Относительное удлинение:<span class="ml-auto">250%</span></li><li>Адгезия к бетону:<span class="ml-auto">Не менее 2Мпа</span></li><li>Возможность хождения:<span class="ml-auto">Через 24 часа</span></li><li>Водонепроницаемость:<span class="ml-auto">не менее W8 (8 атм)</span></li></ul><div class="p-container"><p>Гарантийный срок составляет 5 лет.</p><p>Срок службы материала минимум 15 лет.</p></div></div><div class="cont"><h3 class="accent upper fs-md">Контакты:</h3><p>ООО "АКТЕРМ-СП"</p><P>194356, Санкт-Петербург г, Луначарского пр-кт, дом 52, к 2</P><p>8 (951) 668-93-13</p><p><a href="mailto:rss178@yandex.ru">rss178@yandex.ru</a></p></div></div></section></body></html>

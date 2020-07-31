@@ -13,27 +13,26 @@ html(lang="en")
           section.comparsion
             .gradient.h-200
               header.logo-container
-                img.logo(src="/home/kantegory/work/arkterm/client/assets/logo.svg")
-              img.top(src="/home/kantegory/work/arkterm/client/assets/background/gradient-1.png")
-              h1.heading.upper.white.left.ml-5.mb-2.fs-lg.z-10
-                p Жидкие
-                p изоляционные
-                p покрытия
-              img.bottom.mt-10(src="/home/kantegory/work/arkterm/client/assets/background/gradient-2.png")
+                img.logo(src="/home/kantegory/work/arkterm/client/dist/assets/logo.svg")
+              img.top(src="/home/kantegory/work/arkterm/client/dist/assets/background/gradient-0.png")
+              h1.heading.upper.white.left.ml-5.mb-1.fs-lg.z-10
+                p Защита и
+                p восстановление
+                p фасада
+              img.bottom.mt-10(src="/home/kantegory/work/arkterm/client/dist/assets/background/gradient-2.png")
               .comparsion
-                img.img-compare(src=(`${directory}/${images[index - 1]}`))
-                img.img-compare(src=(`${directory}/${image}`))  
+                .img-compare(style=`--img: url(${directory}/${images[index - 1]});`)
+                .img-compare(style=`--img: url(${directory}/${image});`)  
     main.container.w-100
       each image, index in images
         if index % 2 !== 0 && index > 2 && index < 4
           section.comparsion
             .gradient
-              img.top(src="/home/kantegory/work/arkterm/client/assets/background/gradient-3.png")
-              img.middle(src="/home/kantegory/work/arkterm/client/assets/background/gradient-4.png")
-              img.bottom(src="/home/kantegory/work/arkterm/client/assets/background/gradient-5.png")
+              img.top(src="/home/kantegory/work/arkterm/client/dist/assets/background/gradient-7.png")
+              img.bottom(src="/home/kantegory/work/arkterm/client/dist/assets/background/gradient-9.png")
               .comparsion
-                img.img-compare(src=(`${directory}/${images[index - 1]}`))
-                img.img-compare(src=(`${directory}/${image}`))
+                .img-compare(style=`--img: url(${directory}/${images[index - 1]});`)
+                .img-compare(style=`--img: url(${directory}/${image});`)  
     section.brief
       h2.heading.fs-lg АКТЕРМ 
         span.accent Кристалл
@@ -44,7 +43,6 @@ html(lang="en")
         strong Стоимость работ
       ul
         li Гидрофобизация стен фасада дома АКТЕРМ Кристалл 800 руб/кв.м.
-        li Стоимость колеровки материала компания берет на себя.
 
       p При объёме работ от 2000 кв.м. компания предоставляет рассрочку при оплате 50% от суммы договора.
       p Приобретенные свойства фасада зданий и сооружений после выполнения ремонтных работ по технологии "Актерм Кристалл":
@@ -62,21 +60,31 @@ html(lang="en")
         li Локальное удаление и зачистка стен и элементов фасада (выступов, парапетов, откосов окон, межпанельных швов (в панельных зданиях и сооружениях), декоративных элементов стен, швов перекрытия плит).
         li Грунтование стен и всех элементов стен фасада здания (стен, выступов, парапетов, отсов окон, межпанельных швов (в панельных зданиях и сооружениях), декоративных элементов стен, швов перекрытия плит).
         li Нанесене на стены и все элмент фасада материала Актерм Кристалл (бесцветного или колерованного в соответствии сеткой колеровки) безвоздушным агрегатом высокого давления.
+      .order
+        .wrapper
+          h3.center.accent.fs-md.mb-1 Оставить заявку
+          label(for="orderName") Как к Вам можно обращаться?
+          input(type="text", placeholder="Как к Вам можно обращаться?", id="orderName", required=true)
+          label(for="orderContact") Контактные данные
+          input(type="text", placeholder="Email/телефон", id="orderContact", required=true)
+          label(for="orderAnnotation") Текст заявки
+          textarea(placeholder="Текст заявки", id="orderAnnotation")
+          button(type="button") Отправить заявку
     main.container.w-100
       each image, index in images
         if index % 2 !== 0 && index > 4
           section.comparsion
             .gradient
-              img.top(src="/home/kantegory/work/arkterm/client/assets/background/gradient-7.png")
-              img.bottom(src="/home/kantegory/work/arkterm/client/assets/background/gradient-9.png")
+              img.top(src="/home/kantegory/work/arkterm/client/dist/assets/background/gradient-7.png")
+              img.bottom(src="/home/kantegory/work/arkterm/client/dist/assets/background/gradient-9.png")
               .comparsion
-                img.img-compare(src=(`${directory}/${images[index - 1]}`))
-                img.img-compare(src=(`${directory}/${image}`))
+                .img-compare(style=`--img: url(${directory}/${images[index - 1]});`)
+                .img-compare(style=`--img: url(${directory}/${image});`)  
     section.contacts
       .grad-contacts
-        img(src="/home/kantegory/work/arkterm/client/assets/background/gradient-10.png")
+        img(src="/home/kantegory/work/arkterm/client/dist/assets/background/gradient-10.png")
         .content-contacts
-          h3.heading-contacts.upper.center Технические характеристики
+          h3.fs-lg.upper.center Технические характеристики
           ul
             li Конститенция:
               span.ml-auto Однородная жидкая масса
@@ -88,7 +96,7 @@ html(lang="en")
               span.ml-auto от 250 000 до 450 000 МПа с
             li Термостойкость:
               span.ml-auto от -50 до +150
-            li Расход
+            li Расход:
               span.ml-auto 1 кг/м2 при толщине сплошного слоя 1 мм
             li Температура применения:
               span.ml-auto от +5 до +45
@@ -110,10 +118,8 @@ html(lang="en")
 
         .cont
           h3.accent.upper.fs-md Контакты:
-          p ООО "НАУЧНО-ПРОИЗВОДСТВЕННАЯ КОМПАНИЯ ИЗОЛЯЦИОННЫЕ ТЕХНОЛОГИИ"
-          p 117342, Москва г, Бутлерова ул, дом 17
-          p 8 (926) 100-08-28
-
           p ООО "АКТЕРМ-СП"
           P 194356, Санкт-Петербург г, Луначарского пр-кт, дом 52, к 2
           p 8 (951) 668-93-13
+          p
+            a(href="mailto:rss178@yandex.ru") rss178@yandex.ru
