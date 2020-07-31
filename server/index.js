@@ -1,3 +1,8 @@
+const express = require('express');
+const app = express();
+const server = require('http').createServer(app);
+const bodyParser = require('body-parser');
+
 const http = require('http');
 const formidable = require('formidable');
 const fs = require('fs');
@@ -10,49 +15,99 @@ let config = conf.parse(fs.readFileSync('config/config.ini', 'utf-8'));
 let picDir = config.common.pic_dir;
 let scriptsDir = config.common.scripts_dir;
 
-http.createServer(function (req, res) {
-  if (req.url == '/fileupload') {
-    let form = new formidable.IncomingForm();
-    form.parse(req, function (err, fields, files) {
-      let oldpath = files.filetoupload.path;
-      let newpath = picDir + '/' + files.filetoupload.name;
-      fs.rename(oldpath, newpath, function (err) {
-        if (err) throw err;
-        res.write('File uploaded and moved!');
-        res.end();
-        shell.exec(`${scriptsDir}/update.sh`);
-      });
-  });
+const getImgs = () => {
+  let res = fs.readdirSync(picDir);
+
+  console.log(res);
+
+  return res;
+}
+
+server.listen(8080);
+
+app.use(express.static('../client/'));
+app.use(bodyParser.json());
+
+app.get('/', (req, res) => {
+  res.sendFile(`${__dirname}/views/index.html`)
+})
+
+app.post('/sendmsg', (req, res) => {
+  let body = req.body;
+  let msg = body.msg;
+
+  if (!msg.length) {
+    res.writeHead(400, {'Content-Type': 'application/json'});
+    res.write('{"success": false}');
+    res.end();
+    return;
   }
-  else if (req.url == '/sendmsg') {
-    let msg = '';
 
-    req.on('data', chunk => {
-        msg += chunk.toString(); // convert Buffer to string
-    });
+  sendMsg(msg);
+  res.writeHead(200, {'Content-Type': 'application/json'});
+  res.write('{"success": true}');
+  res.end();
+})
 
-    req.on('end', () => {
-      msg = JSON.parse(msg);
-      msg = msg.msg;
+app.get('/imgs', (req, res) => {
+  let imgs = JSON.stringify(getImgs());
 
-      if (!msg.length) {
-        res.writeHead(400, {'Content-Type': 'application/json'});
-        res.write('{"success": false}');
-        res.end();
-        return;
-      }
+  res.writeHead(200, {'Content-Type': 'application/json'});
+  res.write('{"imgs":' + imgs + '}');
+  res.end();
+})
 
-      sendMsg(msg);
-      res.writeHead(200, {'Content-Type': 'application/json'});
-      res.write('{"success": true}');
+app.post('/delImg', (req, res) => {
+  let body = req.body;
+
+  console.log(body);
+  let img = body.img;
+  console.log(img);
+  let path = `${picDir}/${img}`;
+
+  fs.unlinkSync(path);
+  shell.exec(`${scriptsDir}/update.sh`)
+
+  res.end();
+})
+
+app.post('/changeImg', (req, res) => {
+  let form = new formidable.IncomingForm()
+
+  form.parse(req, (err, fields, files) => {
+    let img = fields.img;
+
+    let path = `${picDir}/${img}`;
+    fs.unlinkSync(path);
+    let oldpath = files.file.path;
+    let newpath = `${picDir}/${img}`;
+
+    fs.rename(oldpath, newpath, (err) => {
+      if (err) throw err;
+      res.write('File uploaded and moved!');
       res.end();
+      shell.exec(`${scriptsDir}/update.sh`)
     })
-  } else {
-    res.writeHead(200, {'Content-Type': 'text/html'});
-    res.write('<form action="fileupload" method="post" enctype="multipart/form-data">');
-    res.write('<input type="file" name="filetoupload"><br>');
-    res.write('<input type="submit">');
-    res.write('</form>');
-    return res.end();
-  }
-}).listen(8080); 
+  })
+})
+
+app.post('/upload', (req, res) => {
+  let form = new formidable.IncomingForm()
+
+  form.parse(req, (err, fields, files) => {
+    let img = getImgs().length;
+
+    let ext = files.file.name.split('.').pop();
+
+    let oldpath = files.file.path;
+    let newpath = `${picDir}/${img}.${ext}`;
+
+    fs.rename(oldpath, newpath, (err) => {
+      if (err) throw err;
+      res.write('File uploaded and moved!');
+      res.end();
+      shell.exec(`${scriptsDir}/update.sh`)
+    })
+  })
+
+})

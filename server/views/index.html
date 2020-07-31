@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Админ-панель</title>
+    <style>
+        .col {
+        display: -webkit-flex;
+        display: -moz-flex;
+        display: -ms-flex;
+        display: -o-flex;
+        display: flex;
+        flex-flow: column;
+        max-width: 200px;
+        margin-bottom: 2em;
+      }
+    </style>
+</head>
+
+<body>
+    <h1>Добавить новое изображение:</h1>
+    <p><input type="file" id="upload"></p>
+    <p><input type="button" value="Загрузить фото" onclick="uploadImg()"></p>
+    <h2>Изменить текущие изображения:</h2>
+    <div class="imgs"></div>
+</body>
+<script type="text/javascript">
+fetch('/imgs')
+    .then((response) => { return response.json() })
+    .then((response) => {
+        let _imgs = response.imgs;
+        let imgs = '';
+
+        for (let img of _imgs) {
+            let id = `img${img.split('.')[0]}`;
+
+            imgs += `<div class="col">
+	            <img width="200" src="images/${img}" alt="" /><br>
+				<button type="button" onclick="delImg('${img}')">Удалить</button>
+				<p>Выберите файл:</p>
+				<input type="file" id="${id}" name="filetoupload">
+	      		<button type="button" onclick="changeImg('${img}', '${id}')">Изменить</button>
+      		</div>`;
+        }
+
+        document.querySelector('.imgs').innerHTML = imgs;
+    })
+    .catch((err) => { console.error(`API ERROR: ${err}`) })
+const delImg = (img) => {
+    let data = JSON.stringify({ img: img });
+
+    fetch('/delImg', {
+            method: 'POST',
+            mode: 'cors',
+            cache: 'no-cache',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            credentials: 'same-origin',
+            body: data
+        })
+        .then((response) => { document.location.reload(true); })
+}
+
+const changeImg = (img, id) => {
+    let file = document.querySelector(`#${id}`).files[0];
+    const formData = new FormData();
+
+    formData.append('file', file);
+    formData.append('img', img);
+
+    fetch('/changeImg', {
+        method: 'POST',
+        body: formData
+    }).then((response) => { document.location.reload(true) })
+}
+
+const uploadImg = (img) => {
+    let file = document.querySelector('#upload').files[0];
+    const formData = new FormData();
+
+    formData.append('file', file);
+    fetch('/upload', {
+        method: 'POST',
+        body: formData
+    }).then((response) => { document.location.reload(true) })
+}
+</script>
+
+</html>

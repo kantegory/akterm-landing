@@ -2,7 +2,6 @@ const fs = require('fs');
 const conf = require('ini');
 const pug = require('pug');
 
-
 let config = conf.parse(fs.readFileSync('/home/kantegory/work/arkterm/client/config/config.ini', 'utf-8'));
 
 let picDir = config.common.pic_dir;

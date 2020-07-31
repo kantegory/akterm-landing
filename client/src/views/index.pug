@@ -6,22 +6,31 @@ html(lang="en")
     style
       include ../styles/index.css
   body
-    header.logo-container
-      img.logo(src="/home/kantegory/work/arkterm/client/assets/logo.svg")
-    main.container
+    .w-100
       each image, index in images
         if index % 2 !== 0 && index > 0 && index < 2
           section.comparsion
-            img(src=(`${directory}/${images[index - 1]}`))
-            img(src=(`${directory}/${image}`))    
-    section
-      h1.heading Жидкие изоляционные покрытия
-    main.container
+            .gradient.h-200
+              header.logo-container
+                img.logo(src="/home/kantegory/work/arkterm/client/assets/logo.svg")
+              img.top(src="/home/kantegory/work/arkterm/client/assets/background/gradient-1.png")
+              h1.heading.upper.white.left.ml-5.mb-2.fs-lg.z-10
+                p Жидкие
+                p изоляционные
+                p покрытия
+              img.bottom.mt-10(src="/home/kantegory/work/arkterm/client/assets/background/gradient-2.png")
+              img(src=(`${directory}/${images[index - 1]}`))
+              img(src=(`${directory}/${image}`))  
+    main.container.w-100
       each image, index in images
         if index % 2 !== 0 && index > 2 && index < 4
           section.comparsion
-            img(src=(`${directory}/${images[index - 1]}`))
-            img(src=(`${directory}/${image}`))
+            .gradient
+              img.top(src="/home/kantegory/work/arkterm/client/assets/background/gradient-3.png")
+              img(src=(`${directory}/${images[index - 1]}`))
+              img.middle(src="/home/kantegory/work/arkterm/client/assets/background/gradient-4.png")
+              img(src=(`${directory}/${image}`))
+              img.bottom(src="/home/kantegory/work/arkterm/client/assets/background/gradient-5.png")
     section.brief
       h2.heading АКТЕРМ 
         span.accent Кристалл
@@ -50,9 +59,13 @@ html(lang="en")
         li Локальное удаление и зачистка стен и элементов фасада (выступов, парапетов, откосов окон, межпанельных швов (в панельных зданиях и сооружениях), декоративных элементов стен, швов перекрытия плит).
         li Грунтование стен и всех элементов стен фасада здания (стен, выступов, парапетов, отсов окон, межпанельных швов (в панельных зданиях и сооружениях), декоративных элементов стен, швов перекрытия плит).
         li Нанесене на стены и все элмент фасада материала Актерм Кристалл (бесцветного или колерованного в соответствии сеткой колеровки) безвоздушным агрегатом высокого давления.
-    main.container
+    main.container.w-100
       each image, index in images
         if index % 2 !== 0 && index > 4
           section.comparsion
-            img(src=(`${directory}/${images[index - 1]}`))
-            img(src=(`${directory}/${image}`))
+            .gradient
+              img.top(src="/home/kantegory/work/arkterm/client/assets/background/gradient-7.png")
+              img(src=(`${directory}/${images[index - 1]}`))
+              img(src=(`${directory}/${image}`))
+              img.bottom(src="/home/kantegory/work/arkterm/client/assets/background/gradient-9.png")
+
