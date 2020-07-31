@@ -26,7 +26,7 @@
     <div class="imgs"></div>
 </body>
 <script type="text/javascript">
-fetch('/imgs')
+fetch('./imgs')
     .then((response) => { return response.json() })
     .then((response) => {
         let _imgs = response.imgs;
@@ -50,7 +50,7 @@ fetch('/imgs')
 const delImg = (img) => {
     let data = JSON.stringify({ img: img });
 
-    fetch('/delImg', {
+    fetch('./delImg', {
             method: 'POST',
             mode: 'cors',
             cache: 'no-cache',
@@ -70,7 +70,7 @@ const changeImg = (img, id) => {
     formData.append('file', file);
     formData.append('img', img);
 
-    fetch('/changeImg', {
+    fetch('./changeImg', {
         method: 'POST',
         body: formData
     }).then((response) => { document.location.reload(true) })
@@ -81,7 +81,7 @@ const uploadImg = (img) => {
     const formData = new FormData();
 
     formData.append('file', file);
-    fetch('/upload', {
+    fetch('./upload', {
         method: 'POST',
         body: formData
     }).then((response) => { document.location.reload(true) })

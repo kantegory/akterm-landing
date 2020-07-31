@@ -12,7 +12,7 @@ init:
 	cd ../client && npm i && \
 	cd ../server && sudo chmod u+x scripts/update.sh && \
 	cd ../server && sudo ./scripts/update.sh
-deploy:
+deployment:
 	sudo nano deploy/nginx.conf && \
 	sudo cp deploy/nginx.conf /etc/nginx/sites-enabled/ && \
 	sudo cp deploy/arkterm-server.service /etc/systemd/system/ && \

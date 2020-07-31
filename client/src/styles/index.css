@@ -332,8 +332,8 @@ p.accent {
 }
 
 .order button {
-	border: none;
-	border-radius: 5px;
+    border: none;
+    border-radius: 5px;
     padding: 0.25rem 0.75rem;
     cursor: pointer;
     width: 300px;
@@ -349,6 +349,16 @@ p.accent {
 
 .order .wrapper {
   padding: 1.5rem;
+}
+
+.order .wrapper .success {
+  display: none;
+  transition: all 0.5s ease-out;
+  color: #155724;
+  padding: 0.75rem 1.25rem;
+  background: #d4edda;
+  text-align: center;
+  font-weight: bold;
 }
 
 @media (min-width: 1440px) and (max-width: 1679px) {

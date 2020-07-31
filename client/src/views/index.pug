@@ -13,26 +13,26 @@ html(lang="en")
           section.comparsion
             .gradient.h-200
               header.logo-container
-                img.logo(src="/home/kantegory/work/arkterm/client/dist/assets/logo.svg")
-              img.top(src="/home/kantegory/work/arkterm/client/dist/assets/background/gradient-0.png")
+                img.logo(src="/assets/logo.svg")
+              img.top(src="/assets/background/gradient-0.png")
               h1.heading.upper.white.left.ml-5.mb-1.fs-lg.z-10
                 p Защита и
                 p восстановление
                 p фасада
-              img.bottom.mt-10(src="/home/kantegory/work/arkterm/client/dist/assets/background/gradient-2.png")
+              img.bottom.mt-10(src="/assets/background/gradient-2.png")
               .comparsion
-                .img-compare(style=`--img: url(${directory}/${images[index - 1]});`)
-                .img-compare(style=`--img: url(${directory}/${image});`)  
+                .img-compare(style=`--img: url(${picPath}/${images[index - 1]});`)
+                .img-compare(style=`--img: url(${picPath}/${image});`)  
     main.container.w-100
       each image, index in images
         if index % 2 !== 0 && index > 2 && index < 4
           section.comparsion
             .gradient
-              img.top(src="/home/kantegory/work/arkterm/client/dist/assets/background/gradient-7.png")
-              img.bottom(src="/home/kantegory/work/arkterm/client/dist/assets/background/gradient-9.png")
+              img.top(src="/assets/background/gradient-7.png")
+              img.bottom(src="/assets/background/gradient-9.png")
               .comparsion
-                .img-compare(style=`--img: url(${directory}/${images[index - 1]});`)
-                .img-compare(style=`--img: url(${directory}/${image});`)  
+                .img-compare(style=`--img: url(${picPath}/${images[index - 1]});`)
+                .img-compare(style=`--img: url(${picPath}/${image});`)  
     section.brief
       h2.heading.fs-lg АКТЕРМ 
         span.accent Кристалл
@@ -63,26 +63,28 @@ html(lang="en")
       .order
         .wrapper
           h3.center.accent.fs-md.mb-1 Оставить заявку
+          .success Ваша заявка успешно отправлена и уже принята в обработку! Мы свяжемся с Вами в ближайшее время!
           label(for="orderName") Как к Вам можно обращаться?
           input(type="text", placeholder="Как к Вам можно обращаться?", id="orderName", required=true)
           label(for="orderContact") Контактные данные
           input(type="text", placeholder="Email/телефон", id="orderContact", required=true)
           label(for="orderAnnotation") Текст заявки
           textarea(placeholder="Текст заявки", id="orderAnnotation")
-          button(type="button") Отправить заявку
+          button(type="button", onclick="sendMsg()") Отправить заявку
+      script(src="./scripts/mailer.js")
     main.container.w-100
       each image, index in images
         if index % 2 !== 0 && index > 4
           section.comparsion
             .gradient
-              img.top(src="/home/kantegory/work/arkterm/client/dist/assets/background/gradient-7.png")
-              img.bottom(src="/home/kantegory/work/arkterm/client/dist/assets/background/gradient-9.png")
+              img.top(src="/assets/background/gradient-7.png")
+              img.bottom(src="/assets/background/gradient-9.png")
               .comparsion
-                .img-compare(style=`--img: url(${directory}/${images[index - 1]});`)
-                .img-compare(style=`--img: url(${directory}/${image});`)  
+                .img-compare(style=`--img: url(${picPath}/${images[index - 1]});`)
+                .img-compare(style=`--img: url(${picPath}/${image});`)  
     section.contacts
       .grad-contacts
-        img(src="/home/kantegory/work/arkterm/client/dist/assets/background/gradient-10.png")
+        img(src="/assets/background/gradient-10.png")
         .content-contacts
           h3.fs-lg.upper.center Технические характеристики
           ul
@@ -123,3 +125,4 @@ html(lang="en")
           p 8 (951) 668-93-13
           p
             a(href="mailto:rss178@yandex.ru") rss178@yandex.ru
+

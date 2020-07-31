@@ -10,7 +10,7 @@ const conf = require('ini');
 const shell = require('shelljs');
 const sendMsg = require('./mailer');
 
-let config = conf.parse(fs.readFileSync('/home/kantegory/work/arkterm/config/config.ini', 'utf-8'));
+let config = conf.parse(fs.readFileSync('/var/www/html/arkterm/config/config.ini', 'utf-8'));
 
 let picDir = config.common.pic_dir;
 let buildDir = config.common.build_dir;
