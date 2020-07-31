@@ -5,7 +5,7 @@ init:
 	curl -s https://raw.githubusercontent.com/Etersoft/eepm/master/packed/epm.sh | bash /dev/stdin ei --auto && \
 	epmi nginx && \
 	epmi npm && \
-	epmi node && \
+	epmi nodejs && \
 	sudo npm i pug-cli -g && \
 	sudo nano config/config.ini && \
 	cd server && npm i && \
