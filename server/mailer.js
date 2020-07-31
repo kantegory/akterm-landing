@@ -2,7 +2,7 @@ const nodemailer = require('nodemailer');
 const conf = require('ini');
 const fs = require('fs');
 
-let config = conf.parse(fs.readFileSync('config/config.ini', 'utf-8'));
+let config = conf.parse(fs.readFileSync('/home/kantegory/work/arkterm/config/config.ini', 'utf-8'));
 
 const transporter = nodemailer.createTransport({
   host: 'smtp.mail.ru',

@@ -7,9 +7,9 @@ init:
 	epmi npm \
 	epmi node \
 	sudo npm i pug-cli -g \
+	sudo nano config/config.ini \
 	cd server && npm i \
 	cd ../client && npm i \
-	cd ../client && sudo mkdir dist && sudo touch index.html \
 	cd ../server && sudo chmod u+x scripts/update.sh \
 	cd ../server && sudo ./scripts/update.sh
 deploy:

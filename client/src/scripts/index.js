@@ -2,7 +2,7 @@ const fs = require('fs');
 const conf = require('ini');
 const pug = require('pug');
 
-let config = conf.parse(fs.readFileSync('/home/kantegory/work/arkterm/client/config/config.ini', 'utf-8'));
+let config = conf.parse(fs.readFileSync('/home/kantegory/work/arkterm/config/config.ini', 'utf-8'));
 
 let picDir = config.common.pic_dir;
 let viewsDir = config.common.views_dir;
@@ -17,8 +17,6 @@ fs.readdir(picDir, function(err, files) {
         }
     )
 
-    // do something with html
-    console.log(html);
     fs.writeFileSync(`${buildDir}/index.html`, html);
 });
 
