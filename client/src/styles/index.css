@@ -44,9 +44,84 @@ body {
   font-size: 36pt;
 }
 
+.fs-md {
+  font-size: 28pt;
+}
+
+h1, h2, h3, h4 {
+  padding: 0;
+  margin: 0;
+}
 
 section {
-  margin: 2em 0;
+  /*margin: 2em 0;*/
+}
+
+section.contacts > * {
+  color: #fff;
+  position: relative;
+  font-size: 20pt;
+  font-weight: 600;
+}
+
+h3.heading-contacts {
+  font-size: 30pt;
+}
+
+.content-contacts {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 3;
+  width: 100%;
+  margin: auto;
+}
+
+.ml-auto {
+  margin-left: auto;
+}
+
+.content-contacts ul, .p-container {
+  display: -webkit-flex;
+  display: -moz-flex;
+  display: -ms-flex;
+  display: -o-flex;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.p-container {
+  margin-left: 2em;
+}
+
+.p-container p {
+  margin: 0;
+  padding: 0;
+}
+
+.cont > p {
+  color: #000;
+}
+
+.cont {
+  padding: 0.75rem 1.25rem;
+}
+
+.content-contacts ul li, .content-contacts p {
+  text-align: left !important;
+  width: 50%;
+  display: -webkit-flex;
+  display: -moz-flex;
+  display: -ms-flex;
+  display: -o-flex;
+  display: flex;
+  flex-direction: row;
+}
+
+.content-contacts ul li::before {
+  content: "•";
 }
 
 .container {
@@ -60,6 +135,7 @@ section {
   justify-content: center;
   align-items: center;
   width: 100%;
+  position: relative;
 }
 
 .comparsion {
@@ -71,11 +147,11 @@ section {
   display: flex;
   flex-flow: row wrap;
   width: 100%;
-  justify-content: center;
-  align-items: center;
+  /*justify-content: center;*/
+  /*align-items: center;*/
 }
 
-.comparsion img {
+.comparsion img.img-compare {
   width: 50%;
 }
 
@@ -93,10 +169,15 @@ section {
 .logo {
   z-index: 10;
   margin-top: 2em;
+  width: 50%;
 }
 
 .heading {
   text-align: center;
+}
+
+.center {
+  text-align: center !important;
 }
 
 .comparsion, .brief {
@@ -105,6 +186,7 @@ section {
 
 .brief {
   margin: auto;
+  margin-top: 2em;
 }
 
 .brief > * {
@@ -125,8 +207,13 @@ section {
 }
 
 p.accent {
-  font-weight: 600;
-  font-size: 18pt;
+  font-weight: 600 !important;
+  font-size: 18pt !important;
+}
+
+.brief p, .brief li {
+  font-size: 14pt;
+  font-weight: normal;
 }
 
 .brief .heading, p.accent {
@@ -135,16 +222,17 @@ p.accent {
 
 .brief {
   position: relative;
+  padding: 0.75rem 1.25rem;
 }
 
 .gradient {
   position: relative;
   width: 100%;
-  height: 145vh;
+  height: 1380px;
 }
 
 .h-200 {
-  height: 200vh !important;
+  height: 2000px !important;
 }
 
 .gradient img.top {
@@ -173,25 +261,96 @@ p.accent {
 
 @media (min-width: 1440px) and (max-width: 1679px) {
   .comparsion, .brief {
-    max-width: 1400px;
+    /*max-width: 1400px;*/
+  }
+
+  .gradient {
+    height: 1150px;
+    min-height: 1050px;
+    max-height: 1150px;
+  }
+
+  .h-200 {
+  	height: 1700px !important;
+    min-height: 1500px !important;
+    max-height: 1700px !important;
   }
 }
 
 @media (min-width: 1280px) and (max-width: 1439px) {
   .comparsion, .brief {
-    max-width: 1200px;
+    /*max-width: 1200px;*/
   }
+
+  .gradient {
+    height: 1000px;
+    min-height: 920px;
+    max-height: 1000px;
+  }
+
+  .h-200 {
+  	height: 1480px !important;
+    min-height: 1400px !important;
+    max-height: 1480px !important;
+  }
+
 }
 
 @media (min-width: 1024px) and (max-width: 1279px) {
   .comparsion, .brief {
-    max-width: 1000px;
+    /*max-width: 1000px;*/
+  }
+
+  .gradient {
+    height: 100%;
+    min-height: 700px;
+    max-height: 900px;
+  }
+
+  .h-200 {
+  	height: 100% !important;
+    min-height: 1100px !important;
+    max-height: 1350px !important;
   }
 }
 
-@media (min-width: 300px) and (max-width: 1023px) {
+@media (min-width: 640px) and (max-width: 1023px) {
   .comparsion, .brief {
-    max-width: 800px;
+    /*max-width: 800px;*/
+    /*flex-flow: column;*/
+  }
+  .gradient {
+    height: 100%;
+    min-height: 400px;
+    max-height: 700px;
+  }
+
+  .h-200 {
+  	height: 100% !important;
+    min-height: 1100px !important;
+    max-height: 1300px !important;
+  }
+}
+
+@media (min-width: 300px) and (max-width: 639px) {
+  .comparsion, .brief {
+    /*max-width: 800px;*/
     flex-flow: column;
   }
+
+  .comparsion img.img-compare {
+    width: 100%;
+  }
+
+/*  .gradient {
+    height: 100%;
+    min-height: 400px;
+    max-height: 700px;
+  }
+
+  .h-200 {
+  	height: 100% !important;
+    min-height: 1100px !important;
+    max-height: 1300px !important;
+  }*/
 }

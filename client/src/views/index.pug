@@ -2,6 +2,7 @@ doctype html
 html(lang="en")
   head
     meta(charset='utf-8')
+    meta(name="viewport", content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0")
     title Актерм
     style
       include ../styles/index.css
@@ -19,25 +20,27 @@ html(lang="en")
                 p изоляционные
                 p покрытия
               img.bottom.mt-10(src="/home/kantegory/work/arkterm/client/assets/background/gradient-2.png")
-              img(src=(`${directory}/${images[index - 1]}`))
-              img(src=(`${directory}/${image}`))  
+              .comparsion
+                img.img-compare(src=(`${directory}/${images[index - 1]}`))
+                img.img-compare(src=(`${directory}/${image}`))  
     main.container.w-100
       each image, index in images
         if index % 2 !== 0 && index > 2 && index < 4
           section.comparsion
             .gradient
               img.top(src="/home/kantegory/work/arkterm/client/assets/background/gradient-3.png")
-              img(src=(`${directory}/${images[index - 1]}`))
               img.middle(src="/home/kantegory/work/arkterm/client/assets/background/gradient-4.png")
-              img(src=(`${directory}/${image}`))
               img.bottom(src="/home/kantegory/work/arkterm/client/assets/background/gradient-5.png")
+              .comparsion
+                img.img-compare(src=(`${directory}/${images[index - 1]}`))
+                img.img-compare(src=(`${directory}/${image}`))
     section.brief
-      h2.heading АКТЕРМ 
+      h2.heading.fs-lg АКТЕРМ 
         span.accent Кристалл
-      h3 Защитное покрытие
+      h3.center.fs-md Защитное покрытие
       p.desc Защитное покрытие для фасадов, декортиавного камня и дерева. Содержит акрил, полиэтиленовый воск и специальные полимеры, позвояющие оттакливаться воду и грязь от финишного слоя. Актерм Кристалл разработан для защиты фасада от влаги и ветра, а так же для сохранения его структуры и улучшения внешнего вида. После нанесения поверхность имеет матово-глянцевый оттенок. Актерм Кристалл создаёт прочную бесшовную и эластичную поверхность. Продукт экологически безопасен, не имеет резкого запаха, обладает длительной стойкостьб к воздействию стоячей воды и паропрницаемостью на фасаде. Содержит биоциды убивающие грибок и плесень. Срок службы более 15 лет.
       p.accent Мы работаем с "АКТЕРМ КРИСТАЛЛ" и знаем о нём всё!
-      h4
+      h4.fs-md
         strong Стоимость работ
       ul
         li Гидрофобизация стен фасада дома АКТЕРМ Кристалл 800 руб/кв.м.
@@ -53,7 +56,7 @@ html(lang="en")
         li защита от плесени и грибка
         li улучшение внешнего вида здания
         li предотвращение дальнейших разрушений, растрескиваний и осыпания стен и элементов фасада.
-      h4
+      h4.fs-md
         strong Этапы работ:
       ol
         li Локальное удаление и зачистка стен и элементов фасада (выступов, парапетов, откосов окон, межпанельных швов (в панельных зданиях и сооружениях), декоративных элементов стен, швов перекрытия плит).
@@ -65,7 +68,52 @@ html(lang="en")
           section.comparsion
             .gradient
               img.top(src="/home/kantegory/work/arkterm/client/assets/background/gradient-7.png")
-              img(src=(`${directory}/${images[index - 1]}`))
-              img(src=(`${directory}/${image}`))
               img.bottom(src="/home/kantegory/work/arkterm/client/assets/background/gradient-9.png")
+              .comparsion
+                img.img-compare(src=(`${directory}/${images[index - 1]}`))
+                img.img-compare(src=(`${directory}/${image}`))
+    section.contacts
+      .grad-contacts
+        img(src="/home/kantegory/work/arkterm/client/assets/background/gradient-10.png")
+        .content-contacts
+          h3.heading-contacts.upper.center Технические характеристики
+          ul
+            li Конститенция:
+              span.ml-auto Однородная жидкая масса
+            li Цвет:
+              span.ml-auto Прозрачный
+            li Плотность:
+              span.ml-auto 1.4-1.5 г/см3
+            li Вязкость по Брукфильду:
+              span.ml-auto от 250 000 до 450 000 МПа с
+            li Термостойкость:
+              span.ml-auto от -50 до +150
+            li Расход
+              span.ml-auto 1 кг/м2 при толщине сплошного слоя 1 мм
+            li Температура применения:
+              span.ml-auto от +5 до +45
+            li Время высыхания:
+              span.ml-auto 24 часа при температуре не нижу +15
+            li Гарантийный срок хранения:
+              span.ml-auto 12 месяцев
+            li Относительное удлинение:
+              span.ml-auto 250%
+            li Адгезия к бетону:
+              span.ml-auto Не менее 2Мпа
+            li Возможность хождения:
+              span.ml-auto Через 24 часа
+            li Водонепроницаемость:
+              span.ml-auto не менее W8 (8 атм)
+          .p-container
+            p Гарантийный срок составляет 5 лет.
+            p Срок службы материала минимум 15 лет.
 
+        .cont
+          h3.accent.upper.fs-md Контакты:
+          p ООО "НАУЧНО-ПРОИЗВОДСТВЕННАЯ КОМПАНИЯ ИЗОЛЯЦИОННЫЕ ТЕХНОЛОГИИ"
+          p 117342, Москва г, Бутлерова ул, дом 17
+          p 8 (926) 100-08-28
+
+          p ООО "АКТЕРМ-СП"
+          P 194356, Санкт-Петербург г, Луначарского пр-кт, дом 52, к 2
+          p 8 (951) 668-93-13
