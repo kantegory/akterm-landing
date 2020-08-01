@@ -531,6 +531,10 @@ p.accent {
     width: 100%;
   }
 
+  .img-compare {
+    scroll-snap-align: start;
+  }
+
   .gradient {
     height: 200vh;
   }
