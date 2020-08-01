@@ -73,7 +73,6 @@ html(lang="en")
             textarea(placeholder="Текст заявки", id="orderAnnotation")
             button(type="button", onclick="sendMsg()") Отправить заявку
         script(src="./scripts/mailer.js")
-        script(src="./scripts/scroll.js")
       section.container.w-100
         each image, index in images
           if index % 2 !== 0 && index > 4
