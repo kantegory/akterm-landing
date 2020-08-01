@@ -1,6 +1,18 @@
 body {
-    margin: 0 5%;
+    /* margin: 0 5%;*/
+    margin: 0;
     padding: 0;
+    overflow: hidden;
+}
+
+.parent {
+  overflow-y: scroll;
+  height: 100vh;
+  scroll-snap-type: y mandatory;
+}
+
+.block {
+  scroll-snap-align: start;
 }
 
 .w-100,
