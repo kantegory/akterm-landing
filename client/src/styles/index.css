@@ -189,6 +189,8 @@ h3.heading-contacts {
     background-repeat: no-repeat;
     background-size: cover;
     height: 100vh;
+    min-height: 100vh;
+    max-height: 100vh;
     max-width: 1600px;
 }
 
@@ -491,12 +493,13 @@ p.accent {
   }
 
   .grad-contacts img {
-    height: 100vh;
+    height: 80vh;
   }
 
   .content-contacts ul li, .content-contacts p {
     font-size: 9pt !important;
     font-weight: normal;
+    width: 90%;
   }
 
   .cont {
@@ -508,7 +511,7 @@ p.accent {
   }
 
   .p-container {
-    margin-left: 6em;
+    margin-left: 4em;
   }
 
   .heading.z-10 p {
