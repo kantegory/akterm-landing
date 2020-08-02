@@ -10,7 +10,9 @@ const conf = require('ini');
 const shell = require('shelljs');
 const sendMsg = require('./mailer');
 
-let config = conf.parse(fs.readFileSync('/var/www/html/arkterm/config/config.ini', 'utf-8'));
+// let confPath = '../config/config.dev.ini';
+let confPath = '../config/config.ini';
+let config = conf.parse(fs.readFileSync(confPath, 'utf-8'));
 
 let picDir = config.common.pic_dir;
 let buildDir = config.common.build_dir;
@@ -56,6 +58,22 @@ app.get('/imgs', (req, res) => {
   res.writeHead(200, {'Content-Type': 'application/json'});
   res.write('{"imgs":' + imgs + '}');
   res.end();
+})
+
+app.get('/getEmail', (req, res) => {
+  let email = JSON.stringify({ email: config.mailer.dest });
+
+  res.writeHead(200, {'Content-Type': 'application/json'});
+  res.write(email);
+  res.end();
+})
+
+app.post('/updateEmail', (req, res) => {
+  let body = req.body;
+  let email = body.email;
+
+  config.mailer.dest = email;
+  fs.writeFileSync(confPath, conf.stringify(config))
 })
 
 app.post('/delImg', (req, res) => {
