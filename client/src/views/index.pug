@@ -7,7 +7,7 @@ html(lang="en")
     link(rel="stylesheet" href="../styles/index.css")
   body
     .parent
-      section.w-100.block
+      section.w-100.block.section
         each image, index in images
           if index % 2 !== 0 && index > 0 && index < 2
             section.comparsion
@@ -23,7 +23,7 @@ html(lang="en")
                 .comparsion
                   .img-compare(style=`--img: url(${picPath}/${images[index - 1]});`)
                   .img-compare(style=`--img: url(${picPath}/${image});`)  
-      section.container.w-100
+      section.container.w-100.section
         each image, index in images
           if index % 2 !== 0 && index > 2 && index < 4
             section.comparsion.block
@@ -33,8 +33,8 @@ html(lang="en")
                 .comparsion
                   .img-compare(style=`--img: url(${picPath}/${images[index - 1]});`)
                   .img-compare(style=`--img: url(${picPath}/${image});`)  
-      section.brief.block
-        h2.heading.fs-lg АКТЕРМ 
+      section.brief.block.section
+        h2.heading.fs-lg.mt-1 АКТЕРМ 
           span.accent Кристалл
         h3.center.fs-md Защитное покрытие
         p.desc Защитное покрытие для фасадов, декортиавного камня и дерева. Содержит акрил, полиэтиленовый воск и специальные полимеры, позвояющие оттакливаться воду и грязь от финишного слоя. Актерм Кристалл разработан для защиты фасада от влаги и ветра, а так же для сохранения его структуры и улучшения внешнего вида. После нанесения поверхность имеет матово-глянцевый оттенок. Актерм Кристалл создаёт прочную бесшовную и эластичную поверхность. Продукт экологически безопасен, не имеет резкого запаха, обладает длительной стойкостьб к воздействию стоячей воды и паропрницаемостью на фасаде. Содержит биоциды убивающие грибок и плесень. Срок службы более 15 лет.
@@ -73,7 +73,7 @@ html(lang="en")
             textarea(placeholder="Текст заявки", id="orderAnnotation")
             button(type="button", onclick="sendMsg()") Отправить заявку
         script(src="./scripts/mailer.js")
-      section.container.w-100
+      section.container.w-100.section
         each image, index in images
           if index % 2 !== 0 && index > 4
             section.comparsion.block
@@ -83,7 +83,7 @@ html(lang="en")
                 .comparsion
                   .img-compare(style=`--img: url(${picPath}/${images[index - 1]});`)
                   .img-compare(style=`--img: url(${picPath}/${image});`)  
-      section.contacts.block
+      section.contacts.block.section
         .grad-contacts
           img(src="/assets/background/gradient-10.png")
           .content-contacts
