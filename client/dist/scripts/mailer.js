@@ -6,6 +6,11 @@ const sendMsg = () => {
 
   if (!cont.value.length || !name.value.length || !annotation.value.length) {
     console.error('empty fields');
+
+    let errNotif = document.querySelector('.error');
+    errNotif.style.display = "block";
+    setTimeout(() => { errNotif.style.display = "none" }, 2500);
+
     return;
   }
 

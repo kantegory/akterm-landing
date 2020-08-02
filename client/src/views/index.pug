@@ -64,11 +64,12 @@ html(lang="en")
         .order
           .wrapper
             h3.center.accent.fs-md.mb-1 Оставить заявку
-            .success Ваша заявка успешно отправлена и уже принята в обработку! Мы свяжемся с Вами в ближайшее время!
+            .success Ваша заявка успешно отправлена и уже принята в обработку!
+            .error Все поля обязательны к заполнению.
             label(for="orderName") Как к Вам можно обращаться?
-            input(type="text", placeholder="Как к Вам можно обращаться?", id="orderName", required=true)
+            input(type="text", placeholder="Как к Вам можно обращаться?", id="orderName")
             label(for="orderContact") Контактные данные
-            input(type="text", placeholder="Email/телефон", id="orderContact", required=true)
+            input(type="text", placeholder="Email/телефон", id="orderContact")
             label(for="orderAnnotation") Текст заявки
             textarea(placeholder="Текст заявки", id="orderAnnotation")
             button(type="button", onclick="sendMsg()") Отправить заявку
