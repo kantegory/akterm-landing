@@ -324,18 +324,29 @@ p.accent {
     width: 500px;
 }
 
+.order input {
+  height: calc(1.5em + .75rem + 2px);
+}
+
 .order input,
 .order textarea {
-    padding: 0;
-    font-size: 12pt;
-    line-height: 1.2;
-    font-stretch: 1.2;
-    font-family: inherit;
+  display: block;
+  width: 100%;
+  padding: .375rem .75rem;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5;
+  color: #495057;
+  background-color: #fff;
+  background-clip: padding-box;
+  border: 1px solid #ced4da;
+  border-radius: .25rem;
+  transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+  font-family: inherit;
+  margin: 0;
 }
 
 .order textarea {
-    padding: 0.25rem 0.5rem !important;
-    resize: none;
     resize: vertical;
     min-height: 50px;
 }
