@@ -116,6 +116,8 @@ app.post('/upload', (req, res) => {
   form.parse(req, (err, fields, files) => {
     let img = getImgs().length;
 
+    img = img.length === 1 ? `0${img}` : img;
+
     let ext = files.file.name.split('.').pop();
 
     let oldpath = files.file.path;
