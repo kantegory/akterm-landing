@@ -9,15 +9,13 @@ let viewsDir = config.common.views_dir;
 let buildDir = config.common.build_dir;
 
 fs.readdir(picDir, function(err, files) {
-    let html = pug.renderFile(
-        `${viewsDir}/index.pug`,
-        {
-            directory: picDir,
-            images: files,
-	    picPath: config.common.pic_path
-        }
-    )
+  let html = pug.renderFile(
+    `${viewsDir}/index.pug`, {
+      directory: picDir,
+      images: files,
+      picPath: config.common.pic_path
+    }
+  )
 
-    fs.writeFileSync(`${buildDir}/index.html`, html);
+  fs.writeFileSync(`${buildDir}/index.html`, html);
 });
-
