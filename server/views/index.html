@@ -2,74 +2,78 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <title>Админ-панель</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
-    <style>
-        html {
+  <meta charset="UTF-8">
+  <title>Админ-панель</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+  <style>
+    html {
       scroll-behavior: smooth;
+    }
+
+    .custom-file {
+      cursor: pointer;
     }
     </style>
 </head>
 
 <body>
-    <header>
-        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-            <a class="navbar-brand" href="#">Админ-панель</a>
-            <div class="collapse navbar-collapse" id="navbarColor01">
-                <ul class="navbar-nav mr-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="#email">Настройки E-mail</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#new">Добавить фото</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#edit">Редактировать фото</a>
-                    </li>
-                </ul>
-            </div>
-        </nav>
-    </header>
-    <main class="container mt-3">
-        <section id="email" class="mb-5">
-            <h3>Настройки E-mail:</h3>
-            <label for="userEmail">Хочу получать уведомления сюда:</label>
-            <div class="d-flex flex-row">
-                <input type="email" class="form-control mr-1" id="userEmail" placeholder="email@example.com">
-                <button class="btn btn-info ml-1" onclick="updateEmail()">Сохранить</button>
-            </div>
-        </section>
-        <section id="new" class="mb-5">
-            <h3>Добавить новое изображение:</h3>
-            <div class="input-group mt-3 mb-5">
-                <div class="custom-file">
-                    <input type="file" class="custom-file-input" id="upload">
-                    <label class="custom-file-label" for="upload" aria-describedby="upload_addon">Выберите файл</label>
-                </div>
-                <div class="input-group-append">
-                    <span class="btn btn-info" id="upload_addon" onclick="uploadImg()">Добавить фото</span>
-                </div>
-            </div>
-        </section>
-        <section id="edit">
-            <h3>Изменить текущие изображения:</h3>
-            <section class="imgs d-flex flex-column container"></section>
-        </section>
-    </main>
+  <header>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <a class="navbar-brand" href="#">Админ-панель</a>
+      <div class="collapse navbar-collapse" id="navbarColor01">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="#email">Настройки E-mail</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#new">Добавить фото</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#edit">Редактировать фото</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+  </header>
+  <main class="container mt-3">
+    <section id="email" class="mb-5">
+      <h3>Настройки E-mail:</h3>
+      <label for="userEmail">Хочу получать уведомления сюда:</label>
+      <div class="d-flex flex-row">
+        <input type="email" class="form-control mr-1" id="userEmail" placeholder="email@example.com">
+        <button class="btn btn-info ml-1" onclick="updateEmail()">Сохранить</button>
+      </div>
+    </section>
+    <section id="new" class="mb-5">
+      <h3>Добавить новое изображение:</h3>
+      <div class="input-group mt-3 mb-5">
+        <div class="custom-file">
+          <input type="file" class="custom-file-input" id="upload" onchange="updateLabel(this.files, this.id)">
+          <label class="custom-file-label" id="upload_label" for="upload" aria-describedby="upload_addon">Выберите файл</label>
+        </div>
+        <div class="input-group-append">
+          <span class="btn btn-info" id="upload_addon" onclick="uploadImg()">Добавить фото</span>
+        </div>
+      </div>
+    </section>
+    <section id="edit">
+      <h3>Изменить текущие изображения:</h3>
+      <section class="imgs d-flex flex-column container"></section>
+    </section>
+  </main>
 </body>
 <script type="text/javascript">
 fetch('./imgs')
-    .then((response) => { return response.json() })
-    .then((response) => {
-        let _imgs = response.imgs;
-        let imgs = '';
+  .then((response) => { return response.json() })
+  .then((response) => {
+    let _imgs = response.imgs;
+    let imgs = '';
 
-        for (let img of _imgs) {
-            let id = `img${img.split('.')[0]}`;
+    for (let img of _imgs) {
+      let id = `img${img.split('.')[0]}`;
 
-            if (_imgs.indexOf(img) % 2 === 0) {
-                imgs += `
+      if (_imgs.indexOf(img) % 2 === 0) {
+        imgs += `
                 <article class="d-flex flex-row mb-3">
                   <div class="img-wrapper card ml-1 w-50">
                     <img width="200" class="card-img-top" src="${img}" alt="" /><br>
@@ -77,8 +81,8 @@ fetch('./imgs')
                         <div class="input-group">
                           <button type="button" class="btn btn-danger mr-1" onclick="delImg('${img}')">Удалить</button>
                           <div class="custom-file ml-1">
-                            <input type="file" class="custom-file-input" id="${id}">
-                            <label class="custom-file-label" for="${id}" aria-describedby="${id}_addon">Выберите файл</label>
+                            <input type="file" class="custom-file-input" id="${id}" onchange="updateLabel(this.files, this.id)">
+                            <label class="custom-file-label" id="${id}_label" for="${id}" aria-describedby="${id}_addon">Выберите файл</label>
                           </div>
                           <div class="input-group-append">
                             <span class="btn btn-info" id="${id}_addon" onclick="changeImg('${img}', '${id}')">Изменить</span>
@@ -87,16 +91,16 @@ fetch('./imgs')
                     </div>
                   </div>
                 `;
-            } else {
-                imgs += `
+      } else {
+        imgs += `
                   <div class="img-wrapper card ml-1 w-50">
                     <img width="200" class="card-img-top" src="${img}" alt="" /><br>
                     <div class="card-body">
                         <div class="input-group">
                           <button type="button" class="btn btn-danger mr-1" onclick="delImg('${img}')">Удалить</button>
                           <div class="custom-file ml-1">
-                            <input type="file" class="custom-file-input" id="${id}">
-                            <label class="custom-file-label" for="${id}" aria-describedby="${id}_addon">Выберите файл</label>
+                            <input type="file" class="custom-file-input" id="${id}" onchange="updateLabel(this.files, this.id)">
+                            <label class="custom-file-label" id="${id}_label" for="${id}" aria-describedby="${id}_addon">Выберите файл</label>
                           </div>
                           <div class="input-group-append">
                             <span class="btn btn-info" id="${id}_addon" onclick="changeImg('${img}', '${id}')">Изменить</span>
@@ -106,79 +110,86 @@ fetch('./imgs')
                   </div>
                 </article>
                 `;
-            }
-        }
+      }
+    }
 
-        document.querySelector('.imgs').innerHTML = imgs;
-    })
-    .catch((err) => { console.error(`API ERROR: ${err}`) })
+    document.querySelector('.imgs').innerHTML = imgs;
+  })
+  .catch((err) => { console.error(`API ERROR: ${err}`) })
 
 fetch('./getEmail')
-    .then((response) => { return response.json() })
-    .then((response) => {
-        let emailInput = document.querySelector('#userEmail');
+  .then((response) => { return response.json() })
+  .then((response) => {
+    let emailInput = document.querySelector('#userEmail');
 
-        emailInput.value = response.email;
-    })
-    .catch((err) => { console.error(`API ERROR: ${err}`) })
+    emailInput.value = response.email;
+  })
+  .catch((err) => { console.error(`API ERROR: ${err}`) })
 
 const updateEmail = () => {
-    let email = document.querySelector('#userEmail').value;
+  let email = document.querySelector('#userEmail').value;
 
-    let data = JSON.stringify({ email: email });
+  let data = JSON.stringify({ email: email });
 
-    fetch('./updateEmail', {
-            method: 'POST',
-            mode: 'cors',
-            cache: 'no-cache',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            credentials: 'same-origin',
-            body: data
-        })
-        .then((response) => { document.location.reload(true); })
+  fetch('./updateEmail', {
+      method: 'POST',
+      mode: 'cors',
+      cache: 'no-cache',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      credentials: 'same-origin',
+      body: data
+    })
+    .then((response) => { document.location.reload(true); })
 }
 
 const delImg = (img) => {
-    let data = JSON.stringify({ img: img });
+  let data = JSON.stringify({ img: img });
 
-    fetch('./delImg', {
-            method: 'POST',
-            mode: 'cors',
-            cache: 'no-cache',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            credentials: 'same-origin',
-            body: data
-        })
-        .then((response) => { document.location.reload(true); })
+  fetch('./delImg', {
+      method: 'POST',
+      mode: 'cors',
+      cache: 'no-cache',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      credentials: 'same-origin',
+      body: data
+    })
+    .then((response) => { document.location.reload(true); })
 }
 
 const changeImg = (img, id) => {
-    let file = document.querySelector(`#${id}`).files[0];
-    const formData = new FormData();
+  let file = document.querySelector(`#${id}`).files[0];
+  const formData = new FormData();
 
-    formData.append('file', file);
-    formData.append('img', img);
+  formData.append('file', file);
+  formData.append('img', img);
 
-    fetch('./changeImg', {
-        method: 'POST',
-        body: formData
-    }).then((response) => { document.location.reload(true) })
+  fetch('./changeImg', {
+    method: 'POST',
+    body: formData
+  }).then((response) => { document.location.reload(true) })
 }
 
 const uploadImg = (img) => {
-    let file = document.querySelector('#upload').files[0];
-    const formData = new FormData();
+  let file = document.querySelector('#upload').files[0];
+  const formData = new FormData();
 
-    formData.append('file', file);
-    fetch('./upload', {
-        method: 'POST',
-        body: formData
-    }).then((response) => { document.location.reload(true) })
+  formData.append('file', file);
+  fetch('./upload', {
+    method: 'POST',
+    body: formData
+  }).then((response) => { document.location.reload(true) })
 }
+
+// add listeners for custom-file-input labels changing to values
+const updateLabel = (files, id) => {
+  let filename = files[0].name;
+  document.querySelector(`#${id}_label`).innerHTML = filename;
+}
+
 </script>
 
 </html>

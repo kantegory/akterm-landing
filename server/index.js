@@ -40,14 +40,14 @@ app.post('/sendmsg', (req, res) => {
   let msg = body.msg;
 
   if (!msg.length) {
-    res.writeHead(400, {'Content-Type': 'application/json'});
+    res.writeHead(400, { 'Content-Type': 'application/json' });
     res.write('{"success": false}');
     res.end();
     return;
   }
 
   sendMsg(msg);
-  res.writeHead(200, {'Content-Type': 'application/json'});
+  res.writeHead(200, { 'Content-Type': 'application/json' });
   res.write('{"success": true}');
   res.end();
 })
@@ -55,7 +55,7 @@ app.post('/sendmsg', (req, res) => {
 app.get('/imgs', (req, res) => {
   let imgs = JSON.stringify(getImgs());
 
-  res.writeHead(200, {'Content-Type': 'application/json'});
+  res.writeHead(200, { 'Content-Type': 'application/json' });
   res.write('{"imgs":' + imgs + '}');
   res.end();
 })
@@ -63,7 +63,7 @@ app.get('/imgs', (req, res) => {
 app.get('/getEmail', (req, res) => {
   let email = JSON.stringify({ email: config.mailer.dest });
 
-  res.writeHead(200, {'Content-Type': 'application/json'});
+  res.writeHead(200, { 'Content-Type': 'application/json' });
   res.write(email);
   res.end();
 })
@@ -75,7 +75,7 @@ app.post('/updateEmail', (req, res) => {
   config.mailer.dest = email;
   fs.writeFileSync(confPath, conf.stringify(config));
 
-  res.writeHead(200, {'Content-Type': 'application/json'});
+  res.writeHead(200, { 'Content-Type': 'application/json' });
   res.write('{"success": true}');
   res.end();
 })
