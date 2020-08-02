@@ -501,7 +501,11 @@ p.accent {
 
 @media (min-width: 300px) and (max-width: 639px) {
   .ml-5 {
-    margin-left: 1.5em;
+    margin-left: 0.5em;
+  }
+
+  .heading.upper.white.mb-1 {
+    margin-bottom: 0.5em;
   }
 
   .fs-lg, .heading-contacts, p.accent {
@@ -510,6 +514,11 @@ p.accent {
 
   .fs-md, section.contacts > *, .brief p, .brief li {
     font-size: 10pt;
+  }
+
+  .order .wrapper .fs-md {
+    font-size: 16pt;
+    scroll-snap-align: start;
   }
 
   .grad-contacts img {
