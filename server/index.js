@@ -73,7 +73,11 @@ app.post('/updateEmail', (req, res) => {
   let email = body.email;
 
   config.mailer.dest = email;
-  fs.writeFileSync(confPath, conf.stringify(config))
+  fs.writeFileSync(confPath, conf.stringify(config));
+
+  res.writeHead(200, {'Content-Type': 'application/json'});
+  res.write('{"success": true}');
+  res.end();
 })
 
 app.post('/delImg', (req, res) => {
@@ -114,9 +118,9 @@ app.post('/upload', (req, res) => {
   let form = new formidable.IncomingForm()
 
   form.parse(req, (err, fields, files) => {
-    let img = getImgs().length;
+    let img = `${getImgs().length}`;
 
-    img = img.length === 1 ? `0${img}` : img;
+    img = img.length < 2 ? `0${img}` : img;
 
     let ext = files.file.name.split('.').pop();
 
