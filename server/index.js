@@ -8,7 +8,6 @@ const formidable = require('formidable');
 const fs = require('fs');
 const conf = require('ini');
 const shell = require('shelljs');
-const sendMsg = require('./mailer');
 
 // let confPath = '../config/config.dev.ini';
 let confPath = '../config/config.ini';
@@ -40,23 +39,6 @@ app.use(bodyParser.json());
 
 app.get('/', (req, res) => {
   res.sendFile(`${__dirname}/views/index.html`)
-})
-
-app.post('/sendmsg', (req, res) => {
-  let body = req.body;
-  let msg = body.msg;
-
-  if (!msg.length) {
-    res.writeHead(400, { 'Content-Type': 'application/json' });
-    res.write('{"success": false}');
-    res.end();
-    return;
-  }
-
-  sendMsg(msg);
-  res.writeHead(200, { 'Content-Type': 'application/json' });
-  res.write('{"success": true}');
-  res.end();
 })
 
 app.get('/imgs', (req, res) => {
