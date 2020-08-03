@@ -14,7 +14,7 @@ const sendMsg = () => {
     return;
   }
 
-  fetch('/admin/sendmsg', {
+  fetch('/mailer/sendmsg', {
       method: "POST",
       body: JSON.stringify({ msg: msg }),
       mode: 'cors',
