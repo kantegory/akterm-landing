@@ -18,6 +18,13 @@ let picDir = config.common.pic_dir;
 let buildDir = config.common.build_dir;
 let scriptsDir = config.common.scripts_dir;
 
+const basicAuth = require('express-basic-auth');
+
+app.use(basicAuth({
+  challenge: true,
+  users: { 'admin': 'rss178' }
+}))
+
 const getImgs = () => {
   let res = fs.readdirSync(picDir);
 
