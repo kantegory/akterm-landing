@@ -1,2 +1,2 @@
-# arkterm
-Server- and client-side for Arkterm Company landing page.
+# Akterm landing
+Server- and client-side for landing page.
