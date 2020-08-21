@@ -136,7 +136,9 @@ main section:first-child {
   margin: auto;
 }
 
-.header__brand {}
+.header__brand img {
+  height: 65px;
+}
 
 .header__nav {
   margin: auto;
@@ -1297,4 +1299,12 @@ main section:first-child {
   .stages-list__item:nth-child(3) .list-item__text {
     width: 60%;
   }
+}
+
+.main section {
+  padding-top: 70px;
+}
+
+section.main__order {
+  padding-top: 0;
 }
