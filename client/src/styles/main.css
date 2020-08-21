@@ -194,7 +194,7 @@ main section:first-child {
 }
 
 .banner__image {
-  background-image: url('/views/images/main__banner.jpeg');
+  background-image: url('../views/images/main__banner.jpeg');
   background-size: cover;
   position: absolute;
   left: 0;
@@ -493,7 +493,7 @@ main section:first-child {
 }
 
 .characteristics__image {
-  background-image: url('/views/images/main__characteristics.jpg');
+  background-image: url('../views/images/main__characteristics.jpg');
   background-size: cover;
   width: inherit;
   height: inherit;
@@ -643,7 +643,7 @@ main section:first-child {
 }
 
 .banner-image {
-  background-image: url('/views/images/price_banner.png');
+  background-image: url('../views/images/price_banner.png');
   background-size: cover;
   height: 516px;
   width: 419px;
@@ -688,6 +688,7 @@ main section:first-child {
 /* portfolio section */
 .main__portfolio {
   margin-bottom: 0 !important;
+  position: relative;
 }
 
 .portfolio__content {
@@ -712,6 +713,17 @@ main section:first-child {
 
 .portfolio__close {
   visibility: hidden;
+  position: absolute;
+  top: 10%;
+  right: 25%;
+  font-size: 20pt;
+  font-weight: bold;
+  color: var(--black);
+  cursor: pointer;
+}
+
+.portfolio__close:hover {
+  color: var(--accent);
 }
 
 .portfolio__preview .portfolio__image {
@@ -747,7 +759,7 @@ main section:first-child {
 }
 
 .order__image {
-  background-image: url('/views/images/main__order.jpeg');
+  background-image: url('../views/images/main__order.jpeg');
   background-size: cover;
   width: inherit;
   height: inherit;
