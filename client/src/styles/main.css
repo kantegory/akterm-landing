@@ -1313,6 +1313,10 @@ main section:first-child {
   padding-top: 70px;
 }
 
+.main section:first-child {
+  padding-top: 0;
+}
+
 section.main__order {
   padding-top: 0;
 }
