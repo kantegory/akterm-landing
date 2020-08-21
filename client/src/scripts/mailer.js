@@ -1,4 +1,6 @@
 const sendMsg = () => {
+  this.event.preventDefault();
+  
   let cont = document.querySelector('#contact');
   let name = document.querySelector('#name');
   let annotation = document.querySelector('#order');

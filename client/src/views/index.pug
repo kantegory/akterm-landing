@@ -205,7 +205,7 @@ html(lang='en')
           .portfolio__content
             each image, index in _images
               img.portfolio__image(src=`/views/images/portfolio/${image}`, alt=`${image}`)
-          if index === 1
+          if index === 0
             .portfolio__preview-wrapper
               .portfolio__preview
 
@@ -233,7 +233,7 @@ html(lang='en')
                 | Текст заявки
               textarea#order.form__input.form__input--textarea(type='text', placeholder='Опишите здесь свою заявку')
             .form__action
-              button.btn.btn--accent Отправить заявку
+              button.btn.btn--accent(onclick="sendMsg()") Отправить заявку
     footer.footer
       .footer__wrapper
         section.footer__contacts.text--white
@@ -256,3 +256,4 @@ html(lang='en')
           .copyright-item.copyright__address Луначарского пр-кт, дом 52, к 2
     script(type='text/javascript', src='../scripts/slider.js')
     script(type='text/javascript', src='../scripts/portfolio.js')
+    script(type='text/javascript', src='../scripts/mailer.js')
