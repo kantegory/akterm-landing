@@ -9,7 +9,7 @@ html(lang='en')
     header.header.sticky
       .header__container
         .header__brand
-          img(src='/views/images/logo.png', alt='Логотип компании')
+          img(src='../views/images/logo.jpg', alt='Логотип компании')
         nav.header__nav
           ul.menu-list
             li.menu-list__item
@@ -22,9 +22,11 @@ html(lang='en')
               a.item-link(href='#main__price') Стоимость
             li.menu-list__item
               a.item-link(href='#main__portfolio') Наши проекты
+          .menu-order
+            button.btn.btn--accent(onclick="window.location = '#main__order'") Отправить заявку
         .header__contacts
           .contacts__icon
-            img(src='/views/images/phone.png', alt='Иконка телефона')
+            img(src='../views/images/phone.png', alt='Иконка телефона')
           .contacts__content.text--bold 8 (951) 668-93-13
     main.main
       section.main__banner.banner__container
@@ -47,32 +49,32 @@ html(lang='en')
           .slider__container
             .slider__item
               .item__image
-                img(src='/views/images/slider__01.jpeg', alt='')
+                img(src='../views/images/slider__01.jpeg', alt='')
               .item__description
                 | "Товарный знак" создаёт прочную бесшовную и эластичную поверхность и после нанесения поверхность имеет матово-глянцевый оттенок.
             .slider__item
               .item__image
-                img(src='/views/images/slider__01.jpeg', alt='')
+                img(src='../views/images/slider__01.jpeg', alt='')
               .item__description
                 | "Товарный знак" создаёт прочную бесшовную и эластичную поверхность и после нанесения поверхность имеет матово-глянцевый оттенок.
             .slider__item
               .item__image
-                img(src='/views/images/slider__01.jpeg', alt='')
+                img(src='../views/images/slider__01.jpeg', alt='')
               .item__description
                 | "Товарный знак" создаёт прочную бесшовную и эластичную поверхность и после нанесения поверхность имеет матово-глянцевый оттенок.
             .slider__item
               .item__image
-                img(src='/views/images/slider__01.jpeg', alt='')
+                img(src='../views/images/slider__01.jpeg', alt='')
               .item__description
                 | "Товарный знак" создаёт прочную бесшовную и эластичную поверхность и после нанесения поверхность имеет матово-глянцевый оттенок.
             .slider__item
               .item__image
-                img(src='/views/images/slider__01.jpeg', alt='')
+                img(src='../views/images/slider__01.jpeg', alt='')
               .item__description
                 | "Товарный знак" создаёт прочную бесшовную и эластичную поверхность и после нанесения поверхность имеет матово-глянцевый оттенок.
             .slider__item
               .item__image
-                img(src='/views/images/slider__01.jpeg', alt='')
+                img(src='../views/images/slider__01.jpeg', alt='')
               .item__description
                 | "Товарный знак" создаёт прочную бесшовную и эластичную поверхность и после нанесения поверхность имеет матово-глянцевый оттенок.
           .slider__controls
@@ -201,19 +203,18 @@ html(lang='en')
       section#main__portfolio.main__portfolio
         h2.portfolio__heading.heading.center
           | Наши проекты
-        each _images, index in images
-          .portfolio__content
-            each image, index in _images
-              img.portfolio__image(src=`/views/images/portfolio/${image}`, alt=`${image}`)
-          if index === 0
-            .portfolio__preview-wrapper
-              .portfolio__preview
-
-        //- .portfolio__content
-        //-   img.portfolio__image(src='/views/images/05.jpg', alt='')
-        //-   img.portfolio__image(src='/views/images/06.jpeg', alt='')
-        //-   img.portfolio__image(src='/views/images/07.JPG', alt='')
-        //-   img.portfolio__image(src='/views/images/08.jpg', alt='')
+        .portfolio__content
+          img.portfolio__image(src='../views/images/01.jpeg', alt='')
+          img.portfolio__image(src='../views/images/02.jpg', alt='')
+          img.portfolio__image(src='../views/images/03.jpg', alt='')
+          img.portfolio__image(src='../views/images/04.jpg', alt='')
+        .portfolio__content
+          img.portfolio__image(src='../views/images/05.jpg', alt='')
+          img.portfolio__image(src='../views/images/06.jpeg', alt='')
+          img.portfolio__image(src='../views/images/07.JPG', alt='')
+          img.portfolio__image(src='../views/images/08.jpg', alt='')
+        .portfolio__preview
+        .portfolio__close ×
       section#main__order.main__order
         .order__image
         .order__filter
@@ -233,7 +234,7 @@ html(lang='en')
                 | Текст заявки
               textarea#order.form__input.form__input--textarea(type='text', placeholder='Опишите здесь свою заявку')
             .form__action
-              button.btn.btn--accent(onclick="sendMsg()") Отправить заявку
+              button.btn.btn--accent Отправить заявку
     footer.footer
       .footer__wrapper
         section.footer__contacts.text--white
@@ -241,19 +242,19 @@ html(lang='en')
           ul.contacts-list.text--bold
             li.contacts-list__item
               .phone-icon.icon
-                img(src='/views/images/phone.png', alt='')
+                img(src='../views/images/phone.png', alt='')
               span.contacts__text 8 (951) 689-93-13
             li.contacts-list__item
               .mail-icon.icon
-                img(src='/views/images/mail.png', alt='')
+                img(src='../views/images/mail.png', alt='')
               span.contacts__text
                 a.contacts__link(href='mailto:rss178@yandex.ru') rss178@yandex.ru
         section.footer__banner
-          img(src='/views/images/logo-lg.png', alt='Логотип компании')
+          img(src='../views/images/logo-lg.png', alt='Логотип компании')
         section.footer__copyright.text--secondary
           .copyright-item.copyright__company ООО "АКТЕРМ-СП"
           .copyright-item.copyright__index 194356, Санкт-Петербург
           .copyright-item.copyright__address Луначарского пр-кт, дом 52, к 2
     script(type='text/javascript', src='../scripts/slider.js')
     script(type='text/javascript', src='../scripts/portfolio.js')
-    script(type='text/javascript', src='../scripts/mailer.js')
+    script(type='text/javascript', src='../scripts/ym.js')
