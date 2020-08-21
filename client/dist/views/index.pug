@@ -201,14 +201,15 @@ html(lang='en')
       section#main__portfolio.main__portfolio
         h2.portfolio__heading.heading.center
           | Наши проекты
-        each _images, index in images
+        each image, index in images
+          if index % 4 !== 0          
           .portfolio__content
-            each image, index in _images
-              img.portfolio__image(src=`/views/images/portfolio/${image}`, alt=`${image}`)
-          if index === 1
-            .portfolio__preview-wrapper
-              .portfolio__preview
-
+            img.portfolio__image(src=`/views/images/${images[index - 3]}`, alt='')
+            img.portfolio__image(src=`/views/images/${images[index - 2]}`, alt='')
+            img.portfolio__image(src=`/views/images/${images[index - 1]}`, alt='')
+            img.portfolio__image(src=`/views/images/${images[index]}`, alt='')
+        .portfolio__preview-wrapper
+          .portfolio__preview
         //- .portfolio__content
         //-   img.portfolio__image(src='/views/images/05.jpg', alt='')
         //-   img.portfolio__image(src='/views/images/06.jpeg', alt='')
