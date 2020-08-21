@@ -1,7 +1,9 @@
 const sendMsg = () => {
-  let cont = document.querySelector('#orderContact');
-  let name = document.querySelector('#orderName');
-  let annotation = document.querySelector('#orderAnnotation');
+  this.event.preventDefault();
+  
+  let cont = document.querySelector('#contact');
+  let name = document.querySelector('#name');
+  let annotation = document.querySelector('#order');
   let msg = `Текст сообщения: ${annotation.value}\nКонтакты: ${cont.value}\nОбращение: ${name.value}`;
 
   if (!cont.value.length || !name.value.length || !annotation.value.length) {
