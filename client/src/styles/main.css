@@ -903,15 +903,23 @@ main section:first-child {
   display: none;
 }
 
-@media (min-width: 1281px) and (max-width: 1537px) {
+@media (min-width: 1367px) and (max-width: 1601px) {
   :root {
     --standardContainer: 85%;
+    --lgContainerWidth: 850px;
   }
 }
 
-@media (min-width: 1025px) and (max-width: 1281px) {
+@media screen and (max-width: 1367px) {
+  .main section {
+    padding-top: 0 !important;
+  }
+}
+
+@media (min-width: 1025px) and (max-width: 1367px) {
   :root {
     --standardContainer: 95%;
+    --lgContainerWidth: 700px;
   }
 
   .order__form {
