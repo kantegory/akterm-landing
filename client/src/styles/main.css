@@ -231,12 +231,13 @@ main section:first-child {
 
 .content__title {
   text-transform: uppercase;
-  font-size: 24pt;
+  font-size: 32pt;
   margin-bottom: 1rem;
 }
 
 .content__description {
   margin-bottom: 2rem;
+  font-size: 18pt;
 }
 
 .content__actions {
