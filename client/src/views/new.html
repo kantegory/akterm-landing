@@ -232,8 +232,8 @@
         <form class="order__form">
           <h2 class="form__heading heading center">Оставить заявку</h2>
           <div class="mt-1"></div>
-          <div class="alert alert--success">Ваша заявка успешно отправлена! Мы постараемся ответить Вам как можно скорее!</div>
-          <div class="alert alert--danger">Проверьте правильность введённых Вами данных.</div>
+          <div class="alert alert--success success" style="display: none">Ваша заявка успешно отправлена! Мы постараемся ответить Вам как можно скорее!</div>
+          <div class="alert alert--danger error" style="display: none">Проверьте правильность введённых Вами данных.</div>
           <div class="form__item">
             <label class="form__label" for="name">Как к Вам можно обращаться?</label>
             <input class="form__input" id="name" type="text" placeholder="Иван Иванов">
@@ -247,7 +247,7 @@
             <textarea class="form__input form__input--textarea" id="order" type="text" placeholder="Опишите здесь свою заявку"></textarea>
           </div>
           <div class="form__action">
-            <button class="btn btn--accent">Отправить заявку</button>
+            <button class="btn btn--accent" onclick="sendMsg()">Отправить заявку</button>
           </div>
         </form>
       </div>
@@ -275,6 +275,7 @@
   </footer>
   <script type="text/javascript" src="../scripts/slider.js"></script>
   <script type="text/javascript" src="../scripts/portfolio.js"></script>
+  <script type="text/javascript" src="../scripts/mailer.js"></script>
   <script type="text/javascript" src="../scripts/ym.js"></script>
 </body>
 
