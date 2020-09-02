@@ -81,7 +81,7 @@ fetch('./slider/imgs')
     let imgs = '';
 
     for (let img of _imgs) {
-      let id = `img${img.split('.')[0]}`;
+      let id = `sld${img.split('.')[0]}`;
 
       if (_imgs.indexOf(img) % 2 === 0) {
         imgs += `
@@ -98,6 +98,9 @@ fetch('./slider/imgs')
                           <div class="input-group-append">
                             <span class="btn btn-info" id="${id}_addon" onclick="changeImg('${img}', '${id}')">Изменить</span>
                           </div>
+                        </div>
+                        <div class="card-text">
+                          <textarea class="form-control" id="${id}_textarea" rows="3"></textarea>
                         </div>
                     </div>
                   </div>
@@ -127,6 +130,22 @@ fetch('./slider/imgs')
     document.querySelector('.sliderPics').innerHTML = imgs;
   })
   .catch(err => console.error('AN API ERROR', err));
+
+fetch('./slider/desc')
+  .then((response) => { return response.json() })
+  .then((response) => {
+    let desc = response.desc;
+
+    for (let _desc of desc) {
+      let num = `${desc.indexOf(_desc)}`;
+      num = num.length === 1 ? `0${num}` : num;
+
+      let id = `sld${num}`;
+
+      document.querySelector(`${id}_textarea`).value = _desc;
+    }
+
+  })
 
 fetch('./imgs')
   .then((response) => { return response.json() })
