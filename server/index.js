@@ -44,7 +44,7 @@ const getSliderDesc = () => {
   let _res = [];
 
   for (let _file of res) {
-    _res.push(fs.readFileSync(`/var/www/html/arkterm/client/dist/views/images/slider/desc/${_file}`, 'utf-8'))
+    _res.push({file: _file, content: fs.readFileSync(`/var/www/html/arkterm/client/dist/views/images/slider/desc/${_file}`, 'utf-8')})
   }
 
   return _res;
@@ -125,7 +125,11 @@ app.post('/upload', (req, res) => {
   let form = new formidable.IncomingForm()
 
   form.parse(req, (err, fields, files) => {
-    let img = `${getImgs().length}`;
+    let imgNum = getImgs();
+    imgNum = imgNum[imgNum.length - 1];
+    imgNum = Number(imgNum.split('.')[0]);
+
+    let img = `${imgNum + 1}`;
 
     img = img.length < 2 ? `0${img}` : img;
 
@@ -194,7 +198,11 @@ app.post('/sld/upload', (req, res) => {
   let form = new formidable.IncomingForm()
 
   form.parse(req, (err, fields, files) => {
-    let img = `${getSliderImgs().length + 1}`;
+    let imgNum = getSliderImgs();
+    imgNum = imgNum[imgNum.length - 1];
+    imgNum = Number(imgNum.split('.')[0]);
+
+    let img = `${imgNum + 1}`;
 
     img = img.length < 2 ? `0${img}` : img;
 
@@ -235,7 +243,11 @@ app.post('/save/descr', (req, res) => {
 })
 
 app.post('/sld/add/descr', (req, res) => {
-  let filename = `${getSliderDesc().length + 1}`;
+  let txtNum = fs.readdirSync('/var/www/html/arkterm/client/dist/views/images/slider/desc/');
+  txtNum = txtNum[txtNum.length - 1];
+  txtNum = Number(txtNum.split('.')[0]);
+
+  let filename = `${txtNum + 1}`;
   filename = filename.length < 2 ? `0${filename}` : filename;
 
   let ext = 'txt';

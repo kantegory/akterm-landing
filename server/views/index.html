@@ -30,6 +30,9 @@
             <a class="nav-link" href="#email">Настройки E-mail</a>
           </li>
           <li class="nav-item">
+            <a class="nav-link" href="#newSlide">Добавить слайд</a>
+          </li>
+          <li class="nav-item">
             <a class="nav-link" href="#editSlider">Редактировать слайдер</a>
           </li>
           <li class="nav-item">
@@ -51,11 +54,7 @@
         <button class="btn btn-info ml-1" onclick="updateEmail()">Сохранить</button>
       </div>
     </section>
-    <section id="editSlider" class="mb-5">
-      <h3>Редактировать слайдер</h3>
-      <section class="sliderPics d-flex flex-column container"></section>
-    </section>
-    <section id="new" class="mb-5">
+    <section id="newSlide" class="mb-5">
       <h3>Добавить новый слайд:</h3>
       <textarea class="form-control" id="sldupload_textarea" rows="3" placeholder="Текст слайда"></textarea>
       <div class="input-group mt-3 mb-5">
@@ -68,8 +67,12 @@
         </div>
       </div>
     </section>
+    <section id="editSlider" class="mb-5">
+      <h3>Редактировать слайдер</h3>
+      <section class="sliderPics d-flex flex-column container"></section>
+    </section>
     <section id="new" class="mb-5">
-      <h3>Добавить новое письмо:</h3>
+      <h3>Добавить новое благодарственное письмо:</h3>
       <div class="input-group mt-3 mb-5">
         <div class="custom-file">
           <input type="file" class="custom-file-input" id="upload" onchange="updateLabel(this.files, this.id)">
@@ -155,15 +158,11 @@ fetch('./slider/descr')
     let desc = response.desc;
 
     for (let i = 0; i < desc.length; i++) {
-      let num = i + 1;
-      num = `${num}`;
-      num = num.length === 1 ? `0${num}` : num;
-
-      let id = `#sld${num}_textarea`;
-
+      let _descNum = desc[i].file.split('.')[0];
+      let id = `#sld${_descNum}_textarea`;
       console.log('id is', id);
 
-      document.querySelector(id).value = desc[i];
+      document.querySelector(id).value = desc[i].content;
     }
 
   })
