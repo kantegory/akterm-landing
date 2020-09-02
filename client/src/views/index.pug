@@ -46,46 +46,22 @@ html(lang='en')
           | "Материал щит" - это специальное защитное покрытие, содержащее акрил, полиэтиленовый воск и специальные полимеры, позволяющиие отталкивать воду и грязь от финишного слоя.
         .about__slider
           .slider__container
-            .slider__item
-              .item__image
-                img(src='../views/images/slider__01.jpeg', alt='')
-              .item__description
-                | "Материал щит" создаёт прочную бесшовную и эластичную поверхность и после нанесения поверхность имеет матово-глянцевый оттенок.
-            .slider__item
-              .item__image
-                img(src='../views/images/slider__01.jpeg', alt='')
-              .item__description
-                | "Материал щит" создаёт прочную бесшовную и эластичную поверхность и после нанесения поверхность имеет матово-глянцевый оттенок.
-            .slider__item
-              .item__image
-                img(src='../views/images/slider__01.jpeg', alt='')
-              .item__description
-                | "Материал щит" создаёт прочную бесшовную и эластичную поверхность и после нанесения поверхность имеет матово-глянцевый оттенок.
-            .slider__item
-              .item__image
-                img(src='../views/images/slider__01.jpeg', alt='')
-              .item__description
-                | "Материал щит" создаёт прочную бесшовную и эластичную поверхность и после нанесения поверхность имеет матово-глянцевый оттенок.
-            .slider__item
-              .item__image
-                img(src='../views/images/slider__01.jpeg', alt='')
-              .item__description
-                | "Материал щит" создаёт прочную бесшовную и эластичную поверхность и после нанесения поверхность имеет матово-глянцевый оттенок.
-            .slider__item
-              .item__image
-                img(src='../views/images/slider__01.jpeg', alt='')
-              .item__description
-                | "Материал щит" создаёт прочную бесшовную и эластичную поверхность и после нанесения поверхность имеет матово-глянцевый оттенок.
+            each item in sliderItems
+              each image, desc in item
+                .slider__item
+                  .item__image
+                    img(src=`/views/images/slider/pics/${image}`)
+                  .item__description
+                    | include `/views/images/slider/desc/${desc}`
           .slider__controls
             .control.control--left
             .control.control--right
           .slider__stages
-            .stage.stage--active
-            .stage
-            .stage
-            .stage
-            .stage
-            .stage
+            each item, index in sliderItems
+              if index === 0
+                .stage.stage--active
+              else
+                .stage
       section#main__stages.main__stages
         h2.stages__heading.heading.center Этапы работ
         ul.stages-list
@@ -196,18 +172,13 @@ html(lang='en')
                 .list-item__text предотвращение дальнейших разрущений
       section#main__portfolio.main__portfolio
         h2.portfolio__heading.heading.center Благодарственные письма
-        .portfolio__content
-          img.portfolio__image(src='../views/images/01.jpeg', alt='')
-          img.portfolio__image(src='../views/images/02.jpg', alt='')
-          img.portfolio__image(src='../views/images/03.jpg', alt='')
-          img.portfolio__image(src='../views/images/04.jpg', alt='')
-        .portfolio__content
-          img.portfolio__image(src='../views/images/05.jpg', alt='')
-          img.portfolio__image(src='../views/images/06.jpeg', alt='')
-          img.portfolio__image(src='../views/images/07.JPG', alt='')
-          img.portfolio__image(src='../views/images/08.jpg', alt='')
-        .portfolio__preview
-        .portfolio__close ×
+        each image, index in portfolio
+          if index % 4 !== 0          
+            .portfolio__content
+              img.portfolio__image(src=`/views/images/portfolio/${images[index - 3]}`, alt='')
+              img.portfolio__image(src=`/views/images/portfolio/${images[index - 2]}`, alt='')
+              img.portfolio__image(src=`/views/images/portfolio/${images[index - 1]}`, alt='')
+              img.portfolio__image(src=`/views/images/portfolio/${images[index]}`, alt='')
       section#main__order.main__order
         .order__image
         .order__filter
