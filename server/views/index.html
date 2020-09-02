@@ -149,6 +149,7 @@ fetch('./slider/desc')
     }
 
   })
+  .catch(err => console.error('API ERROR', err));
 
 fetch('./imgs')
   .then((response) => { return response.json() })
