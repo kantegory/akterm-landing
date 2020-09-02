@@ -51,9 +51,8 @@ html(lang='en')
                 if index === 1
                   .slider__item
                     .item__image
-                      img(src=`/views/images/slider/pics/${_item[0]}`)
-                    .item__description
-                      | include `/views/images/slider/desc/${_item[1]}`
+                      img(src=`/views/images/slider/pics/${item[0]}`)
+                    .item__description #{item[1]}
           .slider__controls
             .control.control--left
             .control.control--right
@@ -173,13 +172,10 @@ html(lang='en')
                 .list-item__text предотвращение дальнейших разрущений
       section#main__portfolio.main__portfolio
         h2.portfolio__heading.heading.center Благодарственные письма
-        each image, index in portfolio
-          if index % 4 !== 0          
-            .portfolio__content
-              img.portfolio__image(src=`/views/images/portfolio/${images[index - 3]}`, alt='')
-              img.portfolio__image(src=`/views/images/portfolio/${images[index - 2]}`, alt='')
-              img.portfolio__image(src=`/views/images/portfolio/${images[index - 1]}`, alt='')
-              img.portfolio__image(src=`/views/images/portfolio/${images[index]}`, alt='')
+        each item in portfolio
+          .portfolio__content
+            each image in item        
+              img.portfolio__image(src=`/views/images/portfolio/${image}`, alt='')
       section#main__order.main__order
         .order__image
         .order__filter

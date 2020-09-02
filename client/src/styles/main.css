@@ -720,7 +720,7 @@ main section:first-child {
 
 .portfolio__content {
   display: grid;
-  grid-template-columns: calc(100% / 3) repeat(2, calc(100% / 6)) calc(100% / 3);
+  grid-template-columns: repeat(4, 1fr);
   grid-auto-rows: 400px;
   width: 100%;
 }
@@ -764,14 +764,9 @@ main section:first-child {
   margin-bottom: 2rem;
 }
 
-.portfolio__content:nth-child(odd) {
-  grid-template-columns: calc(100% / 6) calc(100% / 3) calc(100% / 6) calc(100% / 3);
-}
-
 .portfolio__image {
   width: 100%;
   height: 400px;
-  cursor: pointer;
 }
 
 /* order section */
@@ -952,11 +947,7 @@ main section:first-child {
   }
 
   .portfolio__content {
-    grid-template-columns: calc(100% / 3 * 2) calc(100% / 3);
-  }
-
-  .portfolio__content:nth-child(odd) {
-    grid-template-columns: calc(100% / 3) calc(100% / 3 * 2);
+    grid-template-columns: repeat(2, 1fr);
   }
 
   .properties__list-item {
@@ -993,11 +984,7 @@ main section:first-child {
   }
 
   .portfolio__content {
-    grid-template-columns: calc(100% / 3 * 2) calc(100% / 3);
-  }
-
-  .portfolio__content:nth-child(odd) {
-    grid-template-columns: calc(100% / 3) calc(100% / 3 * 2);
+    grid-template-columns: repeat(2, 1fr);
   }
 
   .properties__list-item {
@@ -1083,13 +1070,8 @@ main section:first-child {
   }
 
   .portfolio__content {
-    grid-template-columns: calc(100% / 3 * 2) calc(100% / 3);
+    grid-template-columns: repeat(2, 1fr);
   }
-
-  .portfolio__content:nth-child(odd) {
-    grid-template-columns: calc(100% / 3) calc(100% / 3 * 2);
-  }
-
 
   .menu-order {
     display: none;
@@ -1250,10 +1232,6 @@ main section:first-child {
   }
 
   .portfolio__content {
-    grid-template-columns: unset;
-  }
-
-  .portfolio__content:nth-child(odd) {
     grid-template-columns: unset;
   }
 
