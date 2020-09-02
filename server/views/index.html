@@ -99,8 +99,9 @@ fetch('./slider/imgs')
                             <span class="btn btn-info" id="${id}_addon" onclick="changeImg('${img}', '${id}')">Изменить</span>
                           </div>
                         </div>
-                        <div class="card-text">
+                        <div class="card-text mt-2">
                           <textarea class="form-control" id="${id}_textarea" rows="3"></textarea>
+                          <button class="btn btn-info mt-1" onclick="saveText('${id}_textarea')">Сохранить текст</button>
                         </div>
                     </div>
                   </div>
@@ -120,8 +121,9 @@ fetch('./slider/imgs')
                             <span class="btn btn-info" id="${id}_addon" onclick="changeImg('${img}', '${id}')">Изменить</span>
                           </div>
                         </div>
-                        <div class="card-text">
+                        <div class="card-text mt-2">
                           <textarea class="form-control" id="${id}_textarea" rows="3"></textarea>
+                          <button class="btn btn-info mt-1" onclick="saveText('${id}_textarea')">Сохранить текст</button>
                         </div>
                     </div>
                   </div>
@@ -134,18 +136,21 @@ fetch('./slider/imgs')
   })
   .catch(err => console.error('AN API ERROR', err));
 
-fetch('./slider/desc')
+fetch('./slider/descr')
   .then((response) => { return response.json() })
   .then((response) => {
     let desc = response.desc;
 
-    for (let _desc of desc) {
-      let num = `${desc.indexOf(_desc)}`;
+    for (let i = 0; i < desc.length; i++) {
+      let num = i + 1;
+      num = `${num}`;
       num = num.length === 1 ? `0${num}` : num;
 
-      let id = `sld${num}`;
+      let id = `#sld${num}_textarea`;
 
-      document.querySelector(`${id}_textarea`).value = _desc;
+      console.log('id is', id);
+
+      document.querySelector(id).value = desc[i];
     }
 
   })
@@ -278,6 +283,9 @@ const updateLabel = (files, id) => {
   document.querySelector(`#${id}_label`).innerHTML = filename;
 }
 
+const saveText = (id) => {
+  console.log('text id is', id);
+}
 </script>
 
 </html>

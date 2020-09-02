@@ -39,7 +39,7 @@ const getSliderImgs = () => {
 }
 
 const getSliderDesc = () => {
-  let res = fs.readdirSync('/var/www/html/arkterm/dist/views/images/slider/desc')
+  let res = fs.readdirSync('/var/www/html/arkterm/client/dist/views/images/slider/desc')
 
   let _res = [];
 
@@ -152,7 +152,7 @@ app.get('/slider/imgs', (req, res) => {
   res.end();
 })
 
-app.get('/slider/desc', (req, res) => {
+app.get('/slider/descr', (req, res) => {
   let desc = JSON.stringify(getSliderDesc());
 
   res.writeHead(200, { 'Content-Type': 'application/json' });
