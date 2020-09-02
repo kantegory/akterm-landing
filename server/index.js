@@ -32,9 +32,27 @@ const getImgs = () => {
   return res;
 }
 
+const getSliderImgs = () => {
+  let res = fs.readdirSync('/var/www/html/arkterm/client/dist/views/images/slider/pics')
+
+  return res;
+}
+
+const getSliderDesc = () => {
+  let res = fs.readdirSync('/var/www/html/arkterm/dist/views/images/slider/desc')
+
+  let _res = [];
+
+  for (let _file of res) {
+    _res.push(fs.readFileSync(`/var/www/html/arkterm/client/dist/views/images/slider/desc/${_file}`, 'utf-8'))
+  }
+
+  return _res;
+}
+
 server.listen(8080);
 
-app.use(express.static(picDir));
+app.use(express.static(`/var/www/html/arkterm/client/dist/views/images/`));
 app.use(bodyParser.json());
 
 app.get('/', (req, res) => {
@@ -124,4 +142,20 @@ app.post('/upload', (req, res) => {
     })
   })
 
+})
+
+app.get('/slider/imgs', (req, res) => {
+  let imgs = JSON.stringify(getSliderImgs());
+
+  res.writeHead(200, { 'Content-Type': 'application/json' });
+  res.write('{"imgs":' + imgs + '}');
+  res.end();
+})
+
+app.get('/slider/desc', (req, res) => {
+  let desc = JSON.stringify(getSliderDesc());
+
+  res.writeHead(200, { 'Content-Type': 'application/json' });
+  res.write('{"desc":' + desc + '}');
+  res.end();
 })

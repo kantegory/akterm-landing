@@ -30,10 +30,13 @@
             <a class="nav-link" href="#email">Настройки E-mail</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#new">Добавить фото</a>
+            <a class="nav-link" href="#editSlider">Редактировать слайдер</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#edit">Редактировать фото</a>
+            <a class="nav-link" href="#new">Добавить благодарственное письмо</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#edit">Благодарственные письма</a>
           </li>
         </ul>
       </div>
@@ -48,8 +51,12 @@
         <button class="btn btn-info ml-1" onclick="updateEmail()">Сохранить</button>
       </div>
     </section>
+    <section id="editSlider" class="mb-5">
+      <h3>Редактировать слайдер</h3>
+      <section class="sliderPics d-flex flex-column container"></section>
+    </section>
     <section id="new" class="mb-5">
-      <h3>Добавить новое изображение:</h3>
+      <h3>Добавить новое письма:</h3>
       <div class="input-group mt-3 mb-5">
         <div class="custom-file">
           <input type="file" class="custom-file-input" id="upload" onchange="updateLabel(this.files, this.id)">
@@ -61,13 +68,13 @@
       </div>
     </section>
     <section id="edit">
-      <h3>Изменить текущие изображения:</h3>
+      <h3>Изменить текущие письма:</h3>
       <section class="imgs d-flex flex-column container"></section>
     </section>
   </main>
 </body>
 <script type="text/javascript">
-fetch('./imgs')
+fetch('./slider/imgs')
   .then((response) => { return response.json() })
   .then((response) => {
     let _imgs = response.imgs;
@@ -80,7 +87,7 @@ fetch('./imgs')
         imgs += `
                 <article class="d-flex flex-row mb-3">
                   <div class="img-wrapper card ml-1 w-50">
-                    <img width="200" class="card-img-top" src="${img}" alt="" /><br>
+                    <img width="200" class="card-img-top" src="/slider/pics/${img}" alt="" /><br>
                     <div class="card-body">
                         <div class="input-group">
                           <button type="button" class="btn btn-danger mr-1" onclick="delImg('${img}')">Удалить</button>
@@ -98,7 +105,61 @@ fetch('./imgs')
       } else {
         imgs += `
                   <div class="img-wrapper card ml-1 w-50">
-                    <img width="200" class="card-img-top" src="${img}" alt="" /><br>
+                    <img width="200" class="card-img-top" src="/slider/pics/${img}" alt="" /><br>
+                    <div class="card-body">
+                        <div class="input-group">
+                          <button type="button" class="btn btn-danger mr-1" onclick="delImg('${img}')">Удалить</button>
+                          <div class="custom-file ml-1">
+                            <input type="file" class="custom-file-input" id="${id}" onchange="updateLabel(this.files, this.id)">
+                            <label class="custom-file-label" id="${id}_label" for="${id}" aria-describedby="${id}_addon">Выберите файл</label>
+                          </div>
+                          <div class="input-group-append">
+                            <span class="btn btn-info" id="${id}_addon" onclick="changeImg('${img}', '${id}')">Изменить</span>
+                          </div>
+                        </div>
+                    </div>
+                  </div>
+                </article>
+                `;
+      }
+    }
+
+    document.querySelector('.sliderPics').innerHTML = imgs;
+  })
+  .catch(err => console.error('AN API ERROR', err));
+
+fetch('./imgs')
+  .then((response) => { return response.json() })
+  .then((response) => {
+    let _imgs = response.imgs;
+    let imgs = '';
+
+    for (let img of _imgs) {
+      let id = `img${img.split('.')[0]}`;
+
+      if (_imgs.indexOf(img) % 2 === 0) {
+        imgs += `
+                <article class="d-flex flex-row mb-3">
+                  <div class="img-wrapper card ml-1 w-50">
+                    <img width="200" class="card-img-top" src="/portfolio/${img}" alt="" /><br>
+                    <div class="card-body">
+                        <div class="input-group">
+                          <button type="button" class="btn btn-danger mr-1" onclick="delImg('${img}')">Удалить</button>
+                          <div class="custom-file ml-1">
+                            <input type="file" class="custom-file-input" id="${id}" onchange="updateLabel(this.files, this.id)">
+                            <label class="custom-file-label" id="${id}_label" for="${id}" aria-describedby="${id}_addon">Выберите файл</label>
+                          </div>
+                          <div class="input-group-append">
+                            <span class="btn btn-info" id="${id}_addon" onclick="changeImg('${img}', '${id}')">Изменить</span>
+                          </div>
+                        </div>
+                    </div>
+                  </div>
+                `;
+      } else {
+        imgs += `
+                  <div class="img-wrapper card ml-1 w-50">
+                    <img width="200" class="card-img-top" src="/portfolio/${img}" alt="" /><br>
                     <div class="card-body">
                         <div class="input-group">
                           <button type="button" class="btn btn-danger mr-1" onclick="delImg('${img}')">Удалить</button>
