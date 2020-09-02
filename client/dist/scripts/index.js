@@ -35,6 +35,7 @@ for (let _file of sliderPics) {
 let sliderDesc = fs.readdirSync(sliderDescDir);
 
 for (let _desc of sliderDesc) {
+  console.log('this is desc', _desc);
   let text = fs.readFileSync(`${sliderDescDir}/${_desc}`, 'utf-8');
   text = text.toString();
 

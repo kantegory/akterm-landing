@@ -158,9 +158,13 @@ app.post('/sld/delImg', (req, res) => {
   console.log(body);
   let img = body.img;
   console.log(img);
-  let path = `/var/www/html/arkterm/client/dist/views/images/slider/pics/${img}`;
 
+  let path = `/var/www/html/arkterm/client/dist/views/images/slider/pics/${img}`;
   fs.unlinkSync(path);
+
+  path = `/var/www/html/arkterm/client/dist/views/images/slider/desc/${img.split('.')[0]}.txt`;
+  fs.unlinkSync(path);
+
   shell.exec(`${scriptsDir}/update.sh`)
 
   res.end();
@@ -190,7 +194,7 @@ app.post('/sld/upload', (req, res) => {
   let form = new formidable.IncomingForm()
 
   form.parse(req, (err, fields, files) => {
-    let img = `${getImgs().length}`;
+    let img = `${getSliderImgs().length + 1}`;
 
     img = img.length < 2 ? `0${img}` : img;
 
@@ -218,10 +222,12 @@ app.get('/slider/descr', (req, res) => {
 })
 
 app.post('/save/descr', (req, res) => {
-  let filename = req.filename;
-  let newVal = req.newVal;
+  let filename = req.body.filename;
+  let newVal = req.body.newVal;
 
   fs.writeFileSync(`/var/www/html/arkterm/client/dist/views/images/slider/desc/${filename}`, newVal);
+
+  shell.exec(`${scriptsDir}/update.sh`)
 
   res.writeHead(200, { 'Content-Type': 'application/json' });
   res.write('{"success": true}');
@@ -234,8 +240,14 @@ app.post('/sld/add/descr', (req, res) => {
 
   let ext = 'txt';
 
-  let descrText = req.descrText;
-  let newpath = `/var/www/html/arkterm/client/dist/views/images/slider/pics/${filename}.${ext}`;
+  let descrText = req.body.descrText;
+  let newpath = `/var/www/html/arkterm/client/dist/views/images/slider/desc/${filename}.${ext}`;
 
-  fs.writeFileSync(`/var/www/html/arkterm/client/dist/views/images/slider/desc/${newpath}`, descrText);
+  fs.appendFileSync(newpath, descrText);
+
+  shell.exec(`${scriptsDir}/update.sh`);
+
+  res.writeHead(200, { 'Content-Type': 'application/json' });
+  res.write('{"success": true}');
+  res.end();
 })

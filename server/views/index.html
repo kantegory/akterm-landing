@@ -303,9 +303,12 @@ const saveText = (id) => {
 
   fetch('./save/descr', {
     method: 'POST',
+    mode: 'cors',
+    cache: 'no-cache',
     headers: {
       'Content-Type': 'application/json'
     },
+    credentials: 'same-origin',
     body: JSON.stringify(data)
   }).then((response) => { document.location.reload(true); })
 }
@@ -354,8 +357,13 @@ const sldUploadImg = (img) => {
 
   fetch('./sld/add/descr', {
     method: 'POST',
-    body: JSON.stringify({ descrText: descrText }),
-    headers: { 'Content-Type': 'application/json' }
+    mode: 'cors',
+    cache: 'no-cache',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    credentials: 'same-origin',
+    body: JSON.stringify({ descrText: descrText })
   }).then((response) => { document.location.reload(true) })
 }
 
