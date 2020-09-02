@@ -47,12 +47,13 @@ html(lang='en')
         .about__slider
           .slider__container
             each item in sliderItems
-              each image, desc in item
-                .slider__item
-                  .item__image
-                    img(src=`/views/images/slider/pics/${image}`)
-                  .item__description
-                    | include `/views/images/slider/desc/${desc}`
+              each _item, index in item
+                if index === 1
+                  .slider__item
+                    .item__image
+                      img(src=`/views/images/slider/pics/${_item[0]}`)
+                    .item__description
+                      | include `/views/images/slider/desc/${_item[1]}`
           .slider__controls
             .control.control--left
             .control.control--right

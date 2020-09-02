@@ -8,28 +8,41 @@ let picDir = config.common.pic_dir;
 let viewsDir = config.common.views_dir;
 let buildDir = config.common.build_dir;
 
-fs.readdir(picDir, function(err, files) {
-  let images = [];
-  
-  console.log("files before", files);
+let portfolioDir = '/var/www/html/arkterm/client/dist/views/images/portfolio/';
 
+let portfolio = [];
+
+fs.readdirSync(portfolioDir, function(err, files) {  
   for (let i = 0; i < files.length; i++) {
     let counter = i + 1;
     if (counter % 4 === 0) {
-      console.log('files are', files.slice(counter - 4, counter));
-      images.push(files.slice(counter - 4, counter));
+      portfolio.push(files.slice(counter - 4, counter));
     }
   }
-
-  console.log('images are', images);
-
-  let html = pug.renderFile(
-    `${viewsDir}/index.pug`, {
-      directory: picDir,
-      images: images,
-      picPath: config.common.pic_path
-    }
-  )
-
-  fs.writeFileSync(`${buildDir}/index.html`, html);
 });
+
+let sliderPicsDir = '/var/www/html/arkterm/client/dist/views/images/slider/pics/';
+let sliderDescDir = '/var/www/html/arkterm/client/dist/views/images/slider/desc/';
+
+let sliderItems = [];
+
+fs.readdirSync(sliderPicsDir, function(err, files) {  
+  for (let _file of files) {
+    sliderItems.push([_file]);
+  }
+});
+
+fs.readdirSync(sliderDescDir, function(err, files) {
+  for (let _desc of files) {
+    sliderItems[files.indexOf(_desc)].push(_desc);
+  }
+})
+
+let html = pug.renderFile(
+  `${viewsDir}/index.pug`, {
+    sliderItems: sliderItems,
+    portfolio: portfolio
+  }
+)
+
+fs.writeFileSync(`${buildDir}/index.html`, html);
