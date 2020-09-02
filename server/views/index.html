@@ -57,7 +57,7 @@
     </section>
     <section id="new" class="mb-5">
       <h3>Добавить новый слайд:</h3>
-      <textarea class="form-control" id="sldupload_textarea" rows="3"></textarea>
+      <textarea class="form-control" id="sldupload_textarea" rows="3" placeholder="Текст слайда"></textarea>
       <div class="input-group mt-3 mb-5">
         <div class="custom-file">
           <input type="file" class="custom-file-input" id="sldupload" onchange="updateLabel(this.files, this.id)">
@@ -298,6 +298,16 @@ const updateLabel = (files, id) => {
 
 const saveText = (id) => {
   console.log('text id is', id);
+
+  let data = { filename: `${id.split('_')[0].split('sld')[1]}.txt`, newVal: document.querySelector(`#${id}`).value };
+
+  fetch('./save/descr', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(data)
+  }).then((response) => { document.location.reload(true); })
 }
 
 const sldDelImg = (img) => {
