@@ -56,7 +56,20 @@
       <section class="sliderPics d-flex flex-column container"></section>
     </section>
     <section id="new" class="mb-5">
-      <h3>Добавить новое письма:</h3>
+      <h3>Добавить новый слайд:</h3>
+      <textarea class="form-control" id="sldupload_textarea" rows="3"></textarea>
+      <div class="input-group mt-3 mb-5">
+        <div class="custom-file">
+          <input type="file" class="custom-file-input" id="sldupload" onchange="updateLabel(this.files, this.id)">
+          <label class="custom-file-label" id="sldupload_label" for="sldupload" aria-describedby="sldupload_addon">Выберите файл</label>
+        </div>
+        <div class="input-group-append">
+          <span class="btn btn-info" id="sldupload_addon" onclick="sldUploadImg()">Добавить фото</span>
+        </div>
+      </div>
+    </section>
+    <section id="new" class="mb-5">
+      <h3>Добавить новое письмо:</h3>
       <div class="input-group mt-3 mb-5">
         <div class="custom-file">
           <input type="file" class="custom-file-input" id="upload" onchange="updateLabel(this.files, this.id)">
@@ -90,13 +103,13 @@ fetch('./slider/imgs')
                     <img width="200" class="card-img-top" src="./slider/pics/${img}" alt="" /><br>
                     <div class="card-body">
                         <div class="input-group">
-                          <button type="button" class="btn btn-danger mr-1" onclick="delImg('${img}')">Удалить</button>
+                          <button type="button" class="btn btn-danger mr-1" onclick="sldDelImg('${img}')">Удалить</button>
                           <div class="custom-file ml-1">
                             <input type="file" class="custom-file-input" id="${id}" onchange="updateLabel(this.files, this.id)">
                             <label class="custom-file-label" id="${id}_label" for="${id}" aria-describedby="${id}_addon">Выберите файл</label>
                           </div>
                           <div class="input-group-append">
-                            <span class="btn btn-info" id="${id}_addon" onclick="changeImg('${img}', '${id}')">Изменить</span>
+                            <span class="btn btn-info" id="${id}_addon" onclick="sldChangeImg('${img}', '${id}')">Изменить</span>
                           </div>
                         </div>
                         <div class="card-text mt-2">
@@ -112,13 +125,13 @@ fetch('./slider/imgs')
                     <img width="200" class="card-img-top" src="./slider/pics/${img}" alt="" /><br>
                     <div class="card-body">
                         <div class="input-group">
-                          <button type="button" class="btn btn-danger mr-1" onclick="delImg('${img}')">Удалить</button>
+                          <button type="button" class="btn btn-danger mr-1" onclick="sldDelImg('${img}')">Удалить</button>
                           <div class="custom-file ml-1">
                             <input type="file" class="custom-file-input" id="${id}" onchange="updateLabel(this.files, this.id)">
                             <label class="custom-file-label" id="${id}_label" for="${id}" aria-describedby="${id}_addon">Выберите файл</label>
                           </div>
                           <div class="input-group-append">
-                            <span class="btn btn-info" id="${id}_addon" onclick="changeImg('${img}', '${id}')">Изменить</span>
+                            <span class="btn btn-info" id="${id}_addon" onclick="sldChangeImg('${img}', '${id}')">Изменить</span>
                           </div>
                         </div>
                         <div class="card-text mt-2">
@@ -286,6 +299,56 @@ const updateLabel = (files, id) => {
 const saveText = (id) => {
   console.log('text id is', id);
 }
+
+const sldDelImg = (img) => {
+  let data = JSON.stringify({ img: img });
+
+  fetch('./sld/delImg', {
+      method: 'POST',
+      mode: 'cors',
+      cache: 'no-cache',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      credentials: 'same-origin',
+      body: data
+    })
+    .then((response) => { document.location.reload(true); })
+}
+
+const sldChangeImg = (img, id) => {
+  let file = document.querySelector(`#${id}`).files[0];
+  const formData = new FormData();
+
+  formData.append('file', file);
+  formData.append('img', img);
+
+  fetch('./sld/changeImg', {
+    method: 'POST',
+    body: formData
+  }).then((response) => { document.location.reload(true) })
+}
+
+const sldUploadImg = (img) => {
+  let file = document.querySelector('#sldupload').files[0];
+
+  const formData = new FormData();
+  formData.append('file', file);
+
+  fetch('./sld/upload', {
+    method: 'POST',
+    body: formData
+  }).then((response) => { console.log('success') })
+
+  let descrText = document.querySelector('#sldupload_textarea').value;
+
+  fetch('./sld/add/descr', {
+    method: 'POST',
+    body: JSON.stringify({ descrText: descrText }),
+    headers: { 'Content-Type': 'application/json' }
+  }).then((response) => { document.location.reload(true) })
+}
+
 </script>
 
 </html>

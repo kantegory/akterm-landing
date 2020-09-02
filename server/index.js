@@ -152,10 +152,90 @@ app.get('/slider/imgs', (req, res) => {
   res.end();
 })
 
+app.post('/sld/delImg', (req, res) => {
+  let body = req.body;
+
+  console.log(body);
+  let img = body.img;
+  console.log(img);
+  let path = `/var/www/html/arkterm/client/dist/views/images/slider/pics/${img}`;
+
+  fs.unlinkSync(path);
+  shell.exec(`${scriptsDir}/update.sh`)
+
+  res.end();
+})
+
+app.post('/sld/changeImg', (req, res) => {
+  let form = new formidable.IncomingForm()
+
+  form.parse(req, (err, fields, files) => {
+    let img = fields.img;
+
+    let path = `/var/www/html/arkterm/client/dist/views/images/slider/pics/${img}`;
+    fs.unlinkSync(path);
+    let oldpath = files.file.path;
+    let newpath = `/var/www/html/arkterm/client/dist/views/images/slider/pics/${img}`;
+
+    fs.rename(oldpath, newpath, (err) => {
+      if (err) throw err;
+      res.write('File uploaded and moved!');
+      res.end();
+      shell.exec(`${scriptsDir}/update.sh`)
+    })
+  })
+})
+
+app.post('/sld/upload', (req, res) => {
+  let form = new formidable.IncomingForm()
+
+  form.parse(req, (err, fields, files) => {
+    let img = `${getImgs().length}`;
+
+    img = img.length < 2 ? `0${img}` : img;
+
+    let ext = files.file.name.split('.').pop();
+
+    let oldpath = files.file.path;
+    let newpath = `/var/www/html/arkterm/client/dist/views/images/slider/pics/${img}.${ext}`;
+
+    fs.rename(oldpath, newpath, (err) => {
+      if (err) throw err;
+      res.write('File uploaded and moved!');
+      res.end();
+      shell.exec(`${scriptsDir}/update.sh`)
+    })
+  })
+
+})
+
 app.get('/slider/descr', (req, res) => {
   let desc = JSON.stringify(getSliderDesc());
 
   res.writeHead(200, { 'Content-Type': 'application/json' });
   res.write('{"desc":' + desc + '}');
   res.end();
+})
+
+app.post('/save/descr', (req, res) => {
+  let filename = req.filename;
+  let newVal = req.newVal;
+
+  fs.writeFileSync(`/var/www/html/arkterm/client/dist/views/images/slider/desc/${filename}`, newVal);
+
+  res.writeHead(200, { 'Content-Type': 'application/json' });
+  res.write('{"success": true}');
+  res.end();
+})
+
+app.post('/sld/add/descr', (req, res) => {
+  let filename = `${getSliderDesc().length + 1}`;
+  filename = filename.length < 2 ? `0${filename}` : filename;
+
+  let ext = 'txt';
+
+  let descrText = req.descrText;
+  let newpath = `/var/www/html/arkterm/client/dist/views/images/slider/pics/${filename}.${ext}`;
+
+  fs.writeFileSync(`/var/www/html/arkterm/client/dist/views/images/slider/desc/${newpath}`, descrText);
 })
