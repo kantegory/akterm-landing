@@ -8,7 +8,7 @@ let confPath = '../config/config.ini';
 let config = conf.parse(fs.readFileSync(confPath, 'utf-8'));
 
 const transporter = nodemailer.createTransport({
-  host: 'smtp.mail.ru',
+  host: 'smtp.spaceweb.ru',
   port: '465',
   auth: {
     user: config.mailer.user,
