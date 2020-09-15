@@ -442,6 +442,7 @@ main section:first-child {
   flex-direction: column;
   justify-content: center;
   width: 100%;
+  flex-flow: row wrap;
 }
 
 .stages-list__item {
