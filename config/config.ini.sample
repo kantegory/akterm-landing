@@ -1,5 +1,6 @@
 [common]
 pic_dir=/var/www/html/arkterm/client/dist/images/
+src_pic_dir=/var/www/html/arkterm/client/src/images/
 pic_path=/images/
 build_dir=/var/www/html/arkterm/client/dist
 views_dir=/var/www/html/arkterm/client/src/views

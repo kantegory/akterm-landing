@@ -13,7 +13,7 @@ const shell = require('shelljs');
 let confPath = '../config/config.ini';
 let config = conf.parse(fs.readFileSync(confPath, 'utf-8'));
 
-let picDir = config.common.pic_dir;
+let picDir = config.common.src_pic_dir;
 let buildDir = config.common.build_dir;
 let scriptsDir = config.common.scripts_dir;
 
@@ -163,10 +163,10 @@ app.post('/sld/delImg', (req, res) => {
   let img = body.img;
   console.log(img);
 
-  let path = `/var/www/html/arkterm/client/dist/views/images/slider/pics/${img}`;
+  let path = `/var/www/html/arkterm/client/src/views/images/slider/pics/${img}`;
   fs.unlinkSync(path);
 
-  path = `/var/www/html/arkterm/client/dist/views/images/slider/desc/${img.split('.')[0]}.txt`;
+  path = `/var/www/html/arkterm/client/src/views/images/slider/desc/${img.split('.')[0]}.txt`;
   fs.unlinkSync(path);
 
   shell.exec(`${scriptsDir}/update.sh`)
@@ -180,12 +180,12 @@ app.post('/sld/changeImg', (req, res) => {
   form.parse(req, (err, fields, files) => {
     let img = fields.img;
 
-    let path = `/var/www/html/arkterm/client/views/images/slider/pics/${img}`;
+    let path = `/var/www/html/arkterm/client/src/views/images/slider/pics/${img}`;
     fs.unlinkSync(path);
     let oldpath = files.file.path;
     let ext = files.file.name.split('.').pop();
     img = img.split('.')[0];
-    let newpath = `/var/www/html/arkterm/client/views/images/slider/pics/${img}.${ext}`;
+    let newpath = `/var/www/html/arkterm/client/src/views/images/slider/pics/${img}.${ext}`;
 
     fs.rename(oldpath, newpath, (err) => {
       if (err) throw err;
@@ -211,7 +211,7 @@ app.post('/sld/upload', (req, res) => {
     let ext = files.file.name.split('.').pop();
 
     let oldpath = files.file.path;
-    let newpath = `/var/www/html/arkterm/client/views/images/slider/pics/${img}.${ext}`;
+    let newpath = `/var/www/html/arkterm/client/src/views/images/slider/pics/${img}.${ext}`;
 
     fs.rename(oldpath, newpath, (err) => {
       if (err) throw err;
@@ -235,7 +235,7 @@ app.post('/save/descr', (req, res) => {
   let filename = req.body.filename;
   let newVal = req.body.newVal;
 
-  fs.writeFileSync(`/var/www/html/arkterm/client/dist/views/images/slider/desc/${filename}`, newVal);
+  fs.writeFileSync(`/var/www/html/arkterm/client/src/views/images/slider/desc/${filename}`, newVal);
 
   shell.exec(`${scriptsDir}/update.sh`)
 
@@ -245,7 +245,7 @@ app.post('/save/descr', (req, res) => {
 })
 
 app.post('/sld/add/descr', (req, res) => {
-  let txtNum = fs.readdirSync('/var/www/html/arkterm/client/dist/views/images/slider/desc/');
+  let txtNum = fs.readdirSync('/var/www/html/arkterm/client/src/views/images/slider/desc/');
   txtNum = txtNum[txtNum.length - 1];
   txtNum = Number(txtNum.split('.')[0]);
 
@@ -255,7 +255,7 @@ app.post('/sld/add/descr', (req, res) => {
   let ext = 'txt';
 
   let descrText = req.body.descrText;
-  let newpath = `/var/www/html/arkterm/client/dist/views/images/slider/desc/${filename}.${ext}`;
+  let newpath = `/var/www/html/arkterm/client/src/views/images/slider/desc/${filename}.${ext}`;
 
   fs.appendFileSync(newpath, descrText);
 
