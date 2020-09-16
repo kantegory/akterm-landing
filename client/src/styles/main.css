@@ -963,9 +963,9 @@ main section:first-child {
     margin-left: 2.5rem;
   }
 
-  .menu-list {
+  /*  .menu-list {
     display: none;
-  }
+  }*/
 
   .menu-order {
     display: flex;
@@ -1047,6 +1047,10 @@ main section:first-child {
 }
 
 @media (min-width: 320px) and (max-width: 769px) {
+  .header__brand img {
+    height: 65px;
+  }
+
   :root {
     --standardContainer: 95%;
   }
