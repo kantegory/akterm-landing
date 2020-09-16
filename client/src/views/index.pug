@@ -24,7 +24,8 @@ html(lang='en')
             li.menu-list__item
               a.item-link(href='#main__portfolio') Благодарственные письма
           .menu-order
-            button.btn.btn--accent(onclick="window.location = '#main__order'") Отправить заявку
+            a(style="position: relative" href="#main__order").btn.btn--accent
+              span(style="position: absolute;top: 50%;left: 50%;transform: translate(-50%,-50%);") Отправить заявку
         .header__contacts
           .contacts__icon
             img(src='../views/images/phone.png', alt='Иконка телефона')
