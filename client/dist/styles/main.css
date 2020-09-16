@@ -968,10 +968,7 @@ main section:first-child {
   }*/
 
   .menu-order {
-    display: flex;
-    justify-content: center;
-    margin: auto;
-    margin-left: 6rem;
+    display: none;
   }
 }
 
