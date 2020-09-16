@@ -4,106 +4,79 @@ html(lang='en')
     meta(charset='UTF-8')
     meta(name='viewport', content='width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0')
     title Защита и восстановление фасада
+    link(rel='stylesheet', href='../styles/stylesheet.css')
     link(rel='stylesheet', href='../styles/main.css')
   body
     header.header.sticky
       .header__container
         .header__brand
-          img(src='/views/images/logo.png', alt='Логотип компании')
+          img(src='../views/images/logo.jpg', alt='Логотип компании')
         nav.header__nav
           ul.menu-list
             li.menu-list__item
-              a.item-link(href='#main__about') Товарный знак
+              a.item-link(href='#main__about') Материал "ЩИТ"
             li.menu-list__item
               a.item-link(href='#main__stages') Этапы работ
-            li.menu-list__item
+            li(style="display:none").menu-list__item
               a.item-link(href='#main__characteristics') Характеристики
             li.menu-list__item
               a.item-link(href='#main__price') Стоимость
             li.menu-list__item
-              a.item-link(href='#main__portfolio') Наши проекты
+              a.item-link(href='#main__portfolio') Благодарственные письма
+          .menu-order
+            a(style="position: relative" href="#main__order").btn.btn--accent
+              span(style="position: absolute;top: 50%;left: 50%;transform: translate(-50%,-50%);") Отправить заявку
         .header__contacts
           .contacts__icon
-            img(src='/views/images/phone.png', alt='Иконка телефона')
+            img(src='../views/images/phone.png', alt='Иконка телефона')
           .contacts__content.text--bold 8 (951) 668-93-13
     main.main
       section.main__banner.banner__container
         .banner__image
-        // <div class="banner__blur"></div>
         .banner__content
-          h1.content__title.text--bold Защита и восстановление фасада
-          h3.content__description.text--normal
-            | Защитное покрытие для фасадок, декоративного камня и дерева
+          h1.content__title.text--bold Восстановление и защита фасада
+          h3(style="display: none").content__description.text--normal Защитное покрытие для фасадок, декоративного камня и дерева
           .content__actions
-            button.btn.btn--accent(onclick="window.location = '#main__order'") Отправить заявку
+            a(style="position: relative" href="#main__order").btn.btn--accent
+              span(style="position: absolute;top: 50%;left: 50%;transform: translate(-50%,-50%);") Отправить заявку
       section#main__about.main__about
         h2.about__heading.heading.center
-          | Что такое 
-          span.text--accent "товарный знак"
-          | ?
+          span.text--accent "ЩИТ"
         .about__description.center
-          | "Товарный знак" - это специальное защитное покрытие, содержащее акрил, полиэтиленовый воск и специальные полимеры, позволяющиие отталкивать воду и грязь от финишного слоя.
+          | «Щит» - гидроизоляционный материал на основе акрила. В производстве используются только современные технологии, что помогло создать материал, который обеспечивает надежную защиту для всех видов фасадов от разрушений и теплопотери. Плотность материала "ЩИТ" позволяет наносить его слоем в 1,00 -1,5 мм, при этом материал перекрывает все видимые разрушения и старое покрытие стен, что улучшает внешний вид фасада. Эластичность и УФ защита материала «ЩИТ» позволяет покрытию прослужить более 15 лет.
         .about__slider
           .slider__container
-            .slider__item
-              .item__image
-                img(src='/views/images/slider__01.jpeg', alt='')
-              .item__description
-                | "Товарный знак" создаёт прочную бесшовную и эластичную поверхность и после нанесения поверхность имеет матово-глянцевый оттенок.
-            .slider__item
-              .item__image
-                img(src='/views/images/slider__01.jpeg', alt='')
-              .item__description
-                | "Товарный знак" создаёт прочную бесшовную и эластичную поверхность и после нанесения поверхность имеет матово-глянцевый оттенок.
-            .slider__item
-              .item__image
-                img(src='/views/images/slider__01.jpeg', alt='')
-              .item__description
-                | "Товарный знак" создаёт прочную бесшовную и эластичную поверхность и после нанесения поверхность имеет матово-глянцевый оттенок.
-            .slider__item
-              .item__image
-                img(src='/views/images/slider__01.jpeg', alt='')
-              .item__description
-                | "Товарный знак" создаёт прочную бесшовную и эластичную поверхность и после нанесения поверхность имеет матово-глянцевый оттенок.
-            .slider__item
-              .item__image
-                img(src='/views/images/slider__01.jpeg', alt='')
-              .item__description
-                | "Товарный знак" создаёт прочную бесшовную и эластичную поверхность и после нанесения поверхность имеет матово-глянцевый оттенок.
-            .slider__item
-              .item__image
-                img(src='/views/images/slider__01.jpeg', alt='')
-              .item__description
-                | "Товарный знак" создаёт прочную бесшовную и эластичную поверхность и после нанесения поверхность имеет матово-глянцевый оттенок.
+            each item in sliderItems
+              each _item, index in item
+                if index === 1
+                  .slider__item
+                    .item__image
+                      img(src=`/views/images/slider/pics/${item[0]}`)
+                    .item__description #{item[1]}
           .slider__controls
             .control.control--left
             .control.control--right
           .slider__stages
-            .stage.stage--active
-            .stage
-            .stage
-            .stage
-            .stage
-            .stage
+            each item, index in sliderItems
+              if index === 0
+                .stage.stage--active
+              else
+                .stage
       section#main__stages.main__stages
         h2.stages__heading.heading.center Этапы работ
         ul.stages-list
           li.stages-list__item.stages-list__item--left
-            .list-item__text
-              | Локальное удаление и зачистка стен и элементов фасада
-              span.text--secondary *
+            .list-item__text Локальное удаление и зачистка стен и элементов фасада
           li.stages-list__item.stages-list__item--right
             .list-item__text Грунтование стен и всех элементов фасада здания
           li.stages-list__item
             .list-item__text
-              | Нанесение на стены и все элементы фасада материала товарный знак безвоздушным агрегатом высокго давления
-        .stages__note.text--muted.center
-          | *выступов, парапетов, откосов окон, межпанельных швов (в панельных зданиях и сооружения), декоративных элементов стен, швов покрытия плит
-      section#main__characteristics.main__characteristics
+              | Нанесение на стены и все элементы фасада материла "ЩИТ" безвоздушным агрегатом высокого давления
+      section(style="display:none")#main__characteristics.main__characteristics
         .characteristics__image
         .characteristics__filter
         .characterictics__content
-          h2.characteristics__heading.heading.center Характеристики
+          h2.characteristics__heading.heading.center Характеристики материала
           .characteristics-list__wrapper
             ul.characteristics-list
               li.characteristics-list__item.text--bold
@@ -130,8 +103,7 @@ html(lang='en')
                 .text--black
                   | 1 кг/м2
                   span.text--secondary *
-                .note.text--secondary.text--normal
-                  | * при толщине сплошного слоя 1 мм
+                .note.text--secondary.text--normal * при толщине сплошного слоя 1 мм
               li.characteristics-list__item.text--bold
                 .text--secondary Температура
                 .text--black +5 - +45
@@ -170,19 +142,19 @@ html(lang='en')
               .banner-filter
               .banner-content.center
                 .price__banner-heading
-                  | Гидрофобизация стен фасада дома
-                  span.text--bold.text--uppercase "товарный знак"
+                  | Гидрофобизация гидроизоляционным 
+                  span.text--bold.text--uppercase Материалом "ЩИТ"
                 .price__banner-content
                   .price__banner-text.text--bold
                     span.banner-text__content 800 руб/кв.м
                 .price__banner-note
-                  | при объёме работ
+                  | при объёме работ 
                   span.text--bold от 2000 кв.м.
-                  |                 компания предоставляет рассрочку при оплате 50% от суммы договора
+                  |  компания предоставляет рассрочку при оплате 50% от суммы договора
           .price__properties
             .properties__title
               | Приобретенные свойства фасада зданий с технологией 
-              span.text--bold.text--uppercase "Товарный знак"
+              span.text--bold.text--uppercase Материал "ЩИТ"
             ul.properties__list
               li.properties__list-item
                 .list-item__text гидроизоляция стен фасада
@@ -199,42 +171,31 @@ html(lang='en')
               li.properties__list-item
                 .list-item__text предотвращение дальнейших разрущений
       section#main__portfolio.main__portfolio
-        h2.portfolio__heading.heading.center
-          | Наши проекты
-        each image, index in images
-          if index % 4 !== 0          
+        h2.portfolio__heading.heading.center Благодарственные письма
+        each item in portfolio
           .portfolio__content
-            img.portfolio__image(src=`/views/images/${images[index - 3]}`, alt='')
-            img.portfolio__image(src=`/views/images/${images[index - 2]}`, alt='')
-            img.portfolio__image(src=`/views/images/${images[index - 1]}`, alt='')
-            img.portfolio__image(src=`/views/images/${images[index]}`, alt='')
-        .portfolio__preview-wrapper
-          .portfolio__preview
-        //- .portfolio__content
-        //-   img.portfolio__image(src='/views/images/05.jpg', alt='')
-        //-   img.portfolio__image(src='/views/images/06.jpeg', alt='')
-        //-   img.portfolio__image(src='/views/images/07.JPG', alt='')
-        //-   img.portfolio__image(src='/views/images/08.jpg', alt='')
+            each image in item        
+              img.portfolio__image(src=`/views/images/portfolio/${image}`, alt='')
       section#main__order.main__order
         .order__image
         .order__filter
         .order__form-wrapper
           form.order__form
             h2.form__heading.heading.center Оставить заявку
+            .mt-1
+            .alert.alert--success.success(style='display: none') Ваша заявка успешно отправлена! Мы постараемся ответить Вам как можно скорее!
+            .alert.alert--danger.error(style='display: none') Проверьте правильность введённых Вами данных.
             .form__item
-              label.form__label(for='name')
-                | Как к Вам можно обращаться?
+              label.form__label(for='name') Как к Вам можно обращаться?
               input#name.form__input(type='text', placeholder='Иван Иванов')
             .form__item
-              label.form__label(for='contact')
-                | Контактные данные
+              label.form__label(for='contact') Контактные данные
               input#contact.form__input(type='text', placeholder='Телефон / E-mail')
             .form__item
-              label.form__label(for='order')
-                | Текст заявки
+              label.form__label(for='order') Текст заявки
               textarea#order.form__input.form__input--textarea(type='text', placeholder='Опишите здесь свою заявку')
             .form__action
-              button.btn.btn--accent Отправить заявку
+              button.btn.btn--accent(onclick='sendMsg()') Отправить заявку
     footer.footer
       .footer__wrapper
         section.footer__contacts.text--white
@@ -242,18 +203,19 @@ html(lang='en')
           ul.contacts-list.text--bold
             li.contacts-list__item
               .phone-icon.icon
-                img(src='/views/images/phone.png', alt='')
+                img(src='../views/images/phone.png', alt='')
               span.contacts__text 8 (951) 689-93-13
             li.contacts-list__item
               .mail-icon.icon
-                img(src='/views/images/mail.png', alt='')
+                img(src='../views/images/mail.png', alt='')
               span.contacts__text
                 a.contacts__link(href='mailto:rss178@yandex.ru') rss178@yandex.ru
         section.footer__banner
-          img(src='/views/images/logo-lg.png', alt='Логотип компании')
+          img(src='../views/images/logo-lg.png', alt='Логотип компании')
         section.footer__copyright.text--secondary
           .copyright-item.copyright__company ООО "АКТЕРМ-СП"
           .copyright-item.copyright__index 194356, Санкт-Петербург
           .copyright-item.copyright__address Луначарского пр-кт, дом 52, к 2
     script(type='text/javascript', src='../scripts/slider.js')
-    script(type='text/javascript', src='../scripts/portfolio.js')
+    script(type='text/javascript', src='../scripts/mailer.js')
+    script(type='text/javascript', src='../scripts/ym.js')
