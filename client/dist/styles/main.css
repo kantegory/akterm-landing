@@ -161,7 +161,7 @@ main section:first-child {
 }
 
 .header__brand img {
-  height: 65px;
+  height: 90px;
 }
 
 .header__nav {
@@ -442,6 +442,7 @@ main section:first-child {
   flex-direction: column;
   justify-content: center;
   width: 100%;
+  flex-flow: row wrap;
 }
 
 .stages-list__item {
@@ -789,8 +790,8 @@ main section:first-child {
   min-height: inherit;
   position: absolute;
   z-index: 1;
-  filter: grayscale(100%);
-  opacity: 0.7;
+  /*filter: grayscale(100%);*/
+  /*opacity: 0.7;*/
 }
 
 .order__form-wrapper {
