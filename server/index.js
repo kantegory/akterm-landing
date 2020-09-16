@@ -180,10 +180,12 @@ app.post('/sld/changeImg', (req, res) => {
   form.parse(req, (err, fields, files) => {
     let img = fields.img;
 
-    let path = `/var/www/html/arkterm/client/dist/views/images/slider/pics/${img}`;
+    let path = `/var/www/html/arkterm/client/views/images/slider/pics/${img}`;
     fs.unlinkSync(path);
     let oldpath = files.file.path;
-    let newpath = `/var/www/html/arkterm/client/dist/views/images/slider/pics/${img}`;
+    let ext = files.file.name.split('.').pop();
+    img = img.split('.')[0];
+    let newpath = `/var/www/html/arkterm/client/views/images/slider/pics/${img}.${ext}`;
 
     fs.rename(oldpath, newpath, (err) => {
       if (err) throw err;
@@ -209,7 +211,7 @@ app.post('/sld/upload', (req, res) => {
     let ext = files.file.name.split('.').pop();
 
     let oldpath = files.file.path;
-    let newpath = `/var/www/html/arkterm/client/dist/views/images/slider/pics/${img}.${ext}`;
+    let newpath = `/var/www/html/arkterm/client/views/images/slider/pics/${img}.${ext}`;
 
     fs.rename(oldpath, newpath, (err) => {
       if (err) throw err;
