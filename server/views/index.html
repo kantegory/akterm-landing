@@ -17,6 +17,15 @@
     .card-img-top {
       height: 400px;
     }
+
+    .alert {
+      position: fixed;
+      top: 0;
+      width: 100vw;
+      height: 60px;
+      display: none;
+      z-index: 10000
+    }
     </style>
 </head>
 
@@ -45,6 +54,9 @@
       </div>
     </nav>
   </header>
+  <div class="alert alert-danger" role="alert">
+    Вы не выбрали файл!
+  </div>
   <main class="container mt-3">
     <section id="email" class="mb-5">
       <h3>Настройки E-mail:</h3>
@@ -334,6 +346,9 @@ const sldChangeImg = (img, id) => {
   console.log('file is', file);
 
   if (!file) {
+    document.querySelector('.alert').style.display = 'block';
+    setTimeout(() => { document.querySelector('.alert').style.display = 'none'; }, 1500);
+
     return;
   }
 
@@ -354,6 +369,9 @@ const sldUploadImg = (img) => {
   console.log('file is', file);
 
   if (!file) {
+    document.querySelector('.alert').style.display = 'block';
+    setTimeout(() => { document.querySelector('.alert').style.display = 'none'; }, 1500);
+    
     return;
   }
 
