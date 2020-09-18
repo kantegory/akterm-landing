@@ -330,6 +330,13 @@ const sldDelImg = (img) => {
 
 const sldChangeImg = (img, id) => {
   let file = document.querySelector(`#${id}`).files[0];
+
+  console.log('file is', file);
+
+  if (!file) {
+    return;
+  }
+
   const formData = new FormData();
 
   formData.append('file', file);
@@ -343,6 +350,12 @@ const sldChangeImg = (img, id) => {
 
 const sldUploadImg = (img) => {
   let file = document.querySelector('#sldupload').files[0];
+
+  console.log('file is', file);
+
+  if (!file) {
+    return;
+  }
 
   const formData = new FormData();
   formData.append('file', file);
