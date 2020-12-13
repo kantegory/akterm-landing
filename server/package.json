@@ -15,7 +15,7 @@
   },
   "devDependencies": {
     "formidable": "^1.2.2",
-    "ini": "^1.3.5",
+    "ini": "^1.3.6",
     "shelljs": "^0.8.4"
   }
 }
