@@ -11,6 +11,6 @@
   },
   "repository": "https://github.com/kantegory/arkterm",
   "devDependencies": {
-    "ini": "^1.3.5"
+    "ini": "^1.3.6"
   }
 }
