@@ -7,7 +7,7 @@
   "author": "David Dobryakov",
   "license": "ISC",
   "dependencies": {
-    "pug": "^3.0.0"
+    "pug": "^3.0.1"
   },
   "repository": "https://github.com/kantegory/arkterm",
   "devDependencies": {
