@@ -175,6 +175,7 @@ app.post('/sld/delImg', (req, res) => {
 })
 
 app.post('/sld/changeImg', (req, res) => {
+  console.log('im in sld/changeimg');
   let form = new formidable.IncomingForm()
 
   form.parse(req, (err, fields, files) => {
@@ -186,6 +187,7 @@ app.post('/sld/changeImg', (req, res) => {
     let ext = files.file.name.split('.').pop();
     img = img.split('.')[0];
     let newpath = `/var/www/html/arkterm/client/src/views/images/slider/pics/${img}.${ext}`;
+    console.log('newpath for img is', newpath);
 
     fs.rename(oldpath, newpath, (err) => {
       if (err) throw err;
@@ -265,3 +267,4 @@ app.post('/sld/add/descr', (req, res) => {
   res.write('{"success": true}');
   res.end();
 })
+

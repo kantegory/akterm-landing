@@ -15,10 +15,10 @@ let portfolio = [];
 let portfolioFiles = fs.readdirSync(portfolioDir);
 
 for (let i = 0; i < portfolioFiles.length; i++) {
-  let counter = i + 1;
-  if (counter % 4 === 0) {
-    portfolio.push(portfolioFiles.slice(counter - 4, counter));
-  }
+  // let counter = i + 1;
+  // if (counter % 4 === 0) {
+  portfolio.push(portfolioFiles[i]);
+  // }
 }
 
 let sliderPicsDir = '/var/www/html/arkterm/client/dist/views/images/slider/pics/';
@@ -39,7 +39,12 @@ for (let _desc of sliderDesc) {
   let text = fs.readFileSync(`${sliderDescDir}/${_desc}`, 'utf-8');
   text = text.toString();
 
-  sliderItems[sliderDesc.indexOf(_desc)].push(text);
+  try {
+    sliderItems[sliderDesc.indexOf(_desc)].push(text);
+  } catch (e) {
+    console.error(e);
+    continue;
+  }
 }
 
 console.log('sliderItems', sliderItems);

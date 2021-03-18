@@ -134,3 +134,5 @@ var multiItemSlider = (function() {
 })();
 
 multiItemSlider(".about__slider", { isCycling: true });
+multiItemSlider(".portfolio__slider", { isCycling: true });
+

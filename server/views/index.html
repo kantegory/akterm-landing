@@ -360,7 +360,7 @@ const sldChangeImg = (img, id) => {
   fetch('./sld/changeImg', {
     method: 'POST',
     body: formData
-  }).then((response) => { document.location.reload(true) })
+  }).then((response) => { document.location.reload(true); })
 }
 
 const sldUploadImg = (img) => {

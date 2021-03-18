@@ -14,7 +14,7 @@ html(lang='en')
         nav.header__nav
           ul.menu-list
             li.menu-list__item
-              a.item-link(href='#main__about') Материал "ЩИТ"
+              a.item-link(href='#main__about') Материал «ГИДРОЩИТ»
             li.menu-list__item
               a.item-link(href='#main__stages') Этапы работ
             li(style="display:none").menu-list__item
@@ -22,7 +22,9 @@ html(lang='en')
             li.menu-list__item
               a.item-link(href='#main__price') Стоимость
             li.menu-list__item
-              a.item-link(href='#main__portfolio') Благодарственные письма
+              a.item-link(href='#main__portfolio') Сертификаты
+            li.menu-list__item
+              a.item-link(href='#main__company') О компании
           .menu-order
             a(style="position: relative" href="#main__order").btn.btn--accent
               span(style="position: absolute;top: 50%;left: 50%;transform: translate(-50%,-50%);") Отправить заявку
@@ -37,13 +39,13 @@ html(lang='en')
           h1.content__title.text--bold Восстановление и защита фасада
           h3(style="display: none").content__description.text--normal Защитное покрытие для фасадок, декоративного камня и дерева
           .content__actions
-            a(style="position: relative" href="#main__order").btn.btn--accent
+            a(style="position: relative;" href="#main__order").btn.btn--accent
               span(style="position: absolute;top: 50%;left: 50%;transform: translate(-50%,-50%);") Отправить заявку
       section#main__about.main__about
         h2.about__heading.heading.center
-          span.text--accent "ЩИТ"
+          span.text--accent "ГИДРОЩИТ"
         .about__description.center
-          | «Щит» - гидроизоляционный материал на основе акрила. В производстве используются только современные технологии, что помогло создать материал, который обеспечивает надежную защиту для всех видов фасадов от разрушений и теплопотери. Плотность материала "ЩИТ" позволяет наносить его слоем в 1,00 -1,5 мм, при этом материал перекрывает все видимые разрушения и старое покрытие стен, что улучшает внешний вид фасада. Эластичность и УФ защита материала «ЩИТ» позволяет покрытию прослужить более 15 лет.
+          | Плотность материала "ГИДРОЩИТ" позволяет наносить его слоем в 1,5 -2,5 мм, при этом материал перекрывает все видимые разрушения и старое покрытие стен, что улучшает внешний вид фасада. Эластичность и УФ защита материала «ЩИТ» позволяет покрытию прослужить более 15 лет.
         .about__slider
           .slider__container
             each item in sliderItems
@@ -71,7 +73,7 @@ html(lang='en')
             .list-item__text Грунтование стен и всех элементов фасада здания
           li.stages-list__item
             .list-item__text
-              | Нанесение на стены и все элементы фасада материла "ЩИТ" безвоздушным агрегатом высокого давления
+              | Нанесение на стены и все элементы фасада материла «ГИДРОЩИТ» безвоздушным агрегатом высокого давления
       section(style="display:none")#main__characteristics.main__characteristics
         .characteristics__image
         .characteristics__filter
@@ -143,10 +145,12 @@ html(lang='en')
               .banner-content.center
                 .price__banner-heading
                   | Гидрофобизация гидроизоляционным 
-                  span.text--bold.text--uppercase Материалом "ЩИТ"
+                  span.text--bold.text--uppercase Материалом «ГИДРОЩИТ»
                 .price__banner-content
                   .price__banner-text.text--bold
-                    span.banner-text__content 800 руб/кв.м
+                    span.banner-text__content
+                        a(style="position: relative;width: 235px;height: 60px;" href="#main__order").btn.btn--accent
+                            span(style="position: absolute;top: 50%;left: 50%;transform: translate(-50%,-50%);") Отправить заявку
                 .price__banner-note
                   | при объёме работ 
                   span.text--bold от 2000 кв.м.
@@ -154,7 +158,7 @@ html(lang='en')
           .price__properties
             .properties__title
               | Приобретенные свойства фасада зданий с технологией 
-              span.text--bold.text--uppercase Материал "ЩИТ"
+              span.text--bold.text--uppercase Материал «ГИДРОЩИТ»
             ul.properties__list
               li.properties__list-item
                 .list-item__text гидроизоляция стен фасада
@@ -171,11 +175,37 @@ html(lang='en')
               li.properties__list-item
                 .list-item__text предотвращение дальнейших разрущений
       section#main__portfolio.main__portfolio
-        h2.portfolio__heading.heading.center Благодарственные письма
-        each item in portfolio
-          .portfolio__content
-            each image in item        
-              img.portfolio__image(src=`/views/images/portfolio/${image}`, alt='')
+        h2.portfolio__heading.heading.center Сертификаты   
+        .portfolio__slider
+          .slider__container
+            each item in portfolio
+              .slider__item
+                .item__image
+                  img.portfolio__image(src=`/views/images/portfolio/${item}`, alt='')
+          .slider__controls
+            .control.control--left
+            .control.control--right
+          .slider__stages
+            each item, index in portfolio
+              if index === 0
+                .stage.stage--active
+              else
+                .stage
+      section#main__company.main__company
+        h2.company__heading.heading.center О компании
+        article.about__description
+            p
+                | Компания ООО «ЗАЩИТИ ФАСАД»
+            p
+                | Мы успешно работает на рынке уже более 5 лет. За это время нашими услугами успели воспользоваться огромное количество Управляющих компаний Санкт-Петербурга и Ленинградской области. Главной задачей компании является сочетание оптимальных для клиентов цен и высокое качество работ. 
+            p
+                | В нашей команде работают только сертифицированные альпинисты с начала основания компании, с многолетним опытом работы. Благодаря этому мы гарантируем высокое качество предоставления услуг монтажа и высокое качество сопутствующих  и подготовительных работ, предоставляя на все работы гарантию.
+            p
+                | С момента основания компании мы работали с огромным количеством материалов различных брендов, представленных на рынке, и применяли только те, которые отвечали нашим высоким требованиям. 
+            p
+                | Со временем нами было принято решение  о создании собственных  материалов, подходящих по всем показателям и свойствам. Наш материал мы можем дорабатывать под любые задачи, контролируя и удерживая качество на высшем уровне.
+                | На данный момент мы работаем исключительно с собственным материалом серии “ЩИТ”, разработанным на основе многолетнего опыта работы с гидро и теплоизоляционными покрытиями. В его качестве успело убедится большое количество наших клиентов. Материал  стабилен, он показывает отличные пластичные свойства, сильную адгезию, устойчивость к ультрафиолету и многие другие свойства, которых мы не смогли получить, используя гидро и теплоизоляцию других брендов. Качество нашего материала с каждым годом только улучшается, благодаря постоянному контролю лучших технологов.
+                | В 2019 году мы провели ребрендинг и смогли выйти на новый уровень в работе и оказании строительных услуг.
       section#main__order.main__order
         .order__image
         .order__filter
@@ -219,3 +249,4 @@ html(lang='en')
     script(type='text/javascript', src='../scripts/slider.js')
     script(type='text/javascript', src='../scripts/mailer.js')
     script(type='text/javascript', src='../scripts/ym.js')
+

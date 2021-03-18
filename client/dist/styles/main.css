@@ -713,10 +713,26 @@ main section:first-child {
   margin: auto;
 }
 
+/* company section */
+.main__company {
+  width: var(--standardContainer);
+  margin: auto;
+}
+
 /* portfolio section */
 .main__portfolio {
-  margin-bottom: 0 !important;
+  width: var(--standardContainer);
+  margin: auto;
+}
+
+.portfolio__slider {
+  overflow: hidden;
   position: relative;
+}
+
+.portfolio__slider .slider__item .item__image img {
+  height: 500px;
+  width: auto;
 }
 
 .portfolio__content {

