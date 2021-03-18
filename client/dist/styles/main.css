@@ -1091,6 +1091,10 @@ main section:first-child {
     grid-template-columns: repeat(2, 1fr);
   }
 
+  .portfolio__slider .slider__item {
+    height: 500px;
+  }
+
   .menu-order {
     display: none;
   }
